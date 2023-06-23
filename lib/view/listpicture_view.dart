@@ -26,22 +26,24 @@ class _ListPictureState extends State<ListPicture> {
           if (snapshot.connectionState == ConnectionState.waiting){
             return const Center(child: CircularProgressIndicator(),);
           } else {
-            return StaggeredGrid.count(
-              crossAxisCount: 2,
-              children: listPictureViewModel.pictures!.map((e) =>
-                  StaggeredGridTile.count(
-                      crossAxisCellCount: 2,
-                      mainAxisCellCount: listPictureViewModel.pictures!.indexOf(e).isEven ? 2 : 1,
-                      child: Container(
-                        color: Colors.grey,
-                        child: FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: "${listPictureViewModel.pictures![listPictureViewModel.pictures!.indexOf(e)].downloadUrl}",
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                  )
-              ).toList(),
+            return SingleChildScrollView(
+              child: StaggeredGrid.count(
+                crossAxisCount: 2,
+                children: listPictureViewModel.pictures!.map((e) =>
+                    StaggeredGridTile.count(
+                        crossAxisCellCount: 2,
+                        mainAxisCellCount: listPictureViewModel.pictures!.indexOf(e).isEven ? 2 : 1,
+                        child: Container(
+                          color: Colors.grey,
+                          child: FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image: "${listPictureViewModel.pictures![listPictureViewModel.pictures!.indexOf(e)].downloadUrl}",
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                    )
+                ).toList(),
+              ),
             );
           }
         },
