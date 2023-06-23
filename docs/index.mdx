@@ -10,4 +10,31 @@ Nella branch master sarà disponibile il progetto di default che prevede l'imple
 revo create-flutter-app
 ```
 
+## Spiegazione
+Come detto in precedenza questo boilerplate permette di avere un'applicazione di prova con l'implementazione del pattern MVVM e ha per il funzionamento della seguente applicazione abbiamo interagito nel seguente modo:
+- docs.json
+    Questo file contiene le direttive con la quale verrà generata la documentazione
+- docs
+    - index.mdx
+        Qui è presente la documentazione che state leggendo, formattata in markdown
+- lib
+    - model
+        All'interno di questa cartella troviamo le interfacce / classi dati che verranno utilizzate all'interno della nostra applicazione
+            - picsum_model.dart
+                La classe che descrive l'oggetto immagine che verrà poi trasmesso dal view model una volta fetchati i dati e visualizzato (all'interno ad una lista di suoi simili) all'interno della view
+    - view_model
+        All'interno di questa cartella troviamo la logica che fetcha i dati, aggiorna il model e aggiorna la view con i nuovi dati del model
+            - listpicture_view_model.dart
+                Il componente responsabile del gestione dei dati del model e della comunicazione dei dati alla view
+    - view
+        All'interno di questa cartella troviamo la sola grafica che viene mostrata sul dispositivo dell'utente
+            - listpicture_view.dart
+                Il componente responsabile della visualizzazione sullo schermo dell'utente della lista di immagini sopra citata
+    - placeholder_values
+        Essendo che questo boilerplate non doveva comunicare con una API all'interno del file sottostante troviamo delle informazioni di placeholder
+            - values.dart
+                I valori delle immagini di placeholder
+    - main.dart
+        Qui abbiamo aggiornato la visualizzazione grafica per fare il display della view creata
+
 <Accordion title="Link utili">[Flutter Architecture in Revo](https://docs.google.com/document/d/1q3hzn1ps6vi_eF63sf2RB5w14BhVOM5t7I3164rSfjc/edit?usp=sharing)</Accordion>
