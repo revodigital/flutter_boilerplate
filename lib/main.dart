@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/view/listpicture_view.dart';
+import 'package:flutter_revo_boilerplate/view/listpicture_view.dart';
 
 void main() {
   runApp(const MyApp());

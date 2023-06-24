@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_boilerplate/placeholder_values/values.dart';
+import 'package:flutter_revo_boilerplate/placeholder_values/values.dart';
 
 import '../model/picsum_model.dart';
 
