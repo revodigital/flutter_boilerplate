@@ -7,8 +7,19 @@ Nella branch master sarà disponibile il progetto di default che prevede l'imple
 ----
 
 ## Installazione (ancora non disponibile)
+Dopo aver installato NodeJS + nom, la Flutter SDK e la Android SDK possiamo procedere alla creazione del nostro progetto (ricordo che la build e l'utilizzo di app iOS richiede Xcode e, pertanto, un ambiente di sviluppo macOS).
+Per prima cosa installiamo la Revo CLI
+```bash
+npm i -g @revodigital/revo-cli
+```
+Dopo ciò possiamo creare la nostra app flutter e scegliere il progetto Default
 ```bash
 revo create-flutter-app
+> Default
+```
+Dopo aver scelto dove inserire il nostro progetto, il nome, e il bundleIdentifier dovremo solo più runnare il seguente comando nella root del nostro progetto
+```bash
+flutter pub get
 ```
 
 ----
