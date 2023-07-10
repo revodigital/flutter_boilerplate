@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_revo_boilerplate/view/listpicture_view.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
-void main() {
+import 'navigation/BottomNavigation.dart';
+
+void main() async {
+  await initHiveForFlutter();
+  await dotenv.load(fileName: "./lib/.env");
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   // This widget is the root of your application.
   @override
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ListPicture(),
+      home: const BottomNavigation(),
     );
   }
 }

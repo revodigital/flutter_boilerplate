@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/view_model/listpicture_view_model.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ListPicture extends StatefulWidget {
@@ -12,7 +13,10 @@ class ListPicture extends StatefulWidget {
 }
 
 class _ListPictureState extends State<ListPicture> {
-  ListPictureViewModel listPictureViewModel = ListPictureViewModel();
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +24,38 @@ class _ListPictureState extends State<ListPicture> {
       appBar: AppBar(
         title: const Text("Picture List"),
       ),
-      body: FutureBuilder(
-        future: listPictureViewModel.fetchPictures(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting){
-            return const Center(child: CircularProgressIndicator(),);
-          } else {
+      body: ChangeNotifierProvider(
+        create: (_) => ListPictureViewModel(),
+        child: Consumer<ListPictureViewModel>(
+          builder: (context, listPictureViewModel, __) {
+            if (listPictureViewModel.pictures == null){
+              listPictureViewModel.fetchPictures();
+            }
+
+            if (listPictureViewModel.isLoading) {
+              return const Center(child: CircularProgressIndicator(),);
+            }
+
+            if (listPictureViewModel.errorMessage != null) {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Errore'),
+                    content: Text(listPictureViewModel.errorMessage!),
+                    actions: [
+                      OutlinedButton(
+                        child: const Text('OK'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+
             return SingleChildScrollView(
               child: StaggeredGrid.count(
                 crossAxisCount: 2,
@@ -37,7 +67,7 @@ class _ListPictureState extends State<ListPicture> {
                           color: Colors.grey,
                           child: FadeInImage.memoryNetwork(
                             placeholder: kTransparentImage,
-                            image: "${listPictureViewModel.pictures![listPictureViewModel.pictures!.indexOf(e)].downloadUrl}",
+                            image: "${listPictureViewModel.pictures![listPictureViewModel.pictures!.indexOf(e)].download_url}",
                             fit: BoxFit.cover,
                           ),
                         )
@@ -45,8 +75,8 @@ class _ListPictureState extends State<ListPicture> {
                 ).toList(),
               ),
             );
-          }
-        },
+          },
+        ),
       ),
     );
   }
