@@ -2,12 +2,12 @@
 <Warning>Questa documentazione potrebbe risultare incompleta e imprecisa in quanto ancora in fase di creazione.</Warning>
 
 ## Introduzione
-Nella branch master sarà disponibile il progetto di default che prevede l'implementazione dell'architettura **MVVM**, senza l'utilizzo di una REST API o di una GraphQL API.
+Nella branch apis sarà disponibile il progetto di default che prevede l'implementazione dell'architettura **MVVM**, con l'utilizzo di una REST API e di una GraphQL API, includendo il processo di auth e refresh token per il mantenimento della sessione.
 
 ----
 
 ## Creazione progetto
-Dopo aver installato NodeJS + nom, la Flutter SDK e la Android SDK possiamo procedere alla creazione del nostro progetto (ricordo che la build e l'utilizzo di app iOS richiede Xcode e, pertanto, un ambiente di sviluppo macOS).
+Dopo aver installato NodeJS + npm, la Flutter SDK e la Android SDK possiamo procedere alla creazione del nostro progetto (ricordo che la build e l'utilizzo di app iOS richiede Xcode e, pertanto, un ambiente di sviluppo macOS).
 Per prima cosa installiamo la Revo CLI
 ```bash
 npm i -g @revodigital/revo-cli
@@ -15,7 +15,7 @@ npm i -g @revodigital/revo-cli
 Dopo ciò possiamo creare la nostra app flutter e scegliere il progetto Default
 ```bash
 revo create-flutter-app
-> Default (Flutter + MVVM)
+> Default, APIs (Flutter + MVVM + APIs)
 ```
 Dopo aver scelto dove inserire il nostro progetto, il nome, e il bundleIdentifier dovremo solo più runnare il seguente comando nella root del nostro progetto
 ```bash
