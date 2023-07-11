@@ -30,6 +30,7 @@ dependencies:
   flutter_hooks: ^0.18.6
   shared_preferences: ^2.2.0
   json_annotation: ^4.8.0
+  dashbook: ^0.1.12
 
 dev_dependencies:
   retrofit_generator: '>=5.0.0 <6.0.0'

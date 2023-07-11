@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_revo_boilerplate/stroybook/dashbook.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import 'navigation/BottomNavigation.dart';
@@ -7,7 +8,9 @@ import 'navigation/BottomNavigation.dart';
 void main() async {
   await initHiveForFlutter();
   await dotenv.load(fileName: "./lib/.env");
-  runApp(const MyApp());
+  final dashbookApp = DashbookApp().init();
+  
+  runApp(dotenv.env["STORYBOOK"] == "true" ? dashbookApp : const MyApp());
 }
 
 class MyApp extends StatelessWidget {
