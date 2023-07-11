@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_revo_boilerplate/view_model/listpicture_view_model.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class ListPicture extends StatefulWidget {
-  const ListPicture({super.key});
+import '../view_model/listchar_view_model.dart';
+
+class ListChar extends StatefulWidget {
+  const ListChar({super.key});
 
   @override
-  State<ListPicture> createState() => _ListPictureState();
+  State<ListChar> createState() => _ListCharState();
 }
 
-class _ListPictureState extends State<ListPicture> {
+class _ListCharState extends State<ListChar> {
   @override
   void initState() {
     super.initState();
@@ -22,27 +23,27 @@ class _ListPictureState extends State<ListPicture> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Picture List"),
+        title: const Text("Char List"),
       ),
       body: ChangeNotifierProvider(
-        create: (_) => ListPictureViewModel(),
-        child: Consumer<ListPictureViewModel>(
-          builder: (context, listPictureViewModel, __) {
-            if (listPictureViewModel.pictures == null){
-              listPictureViewModel.fetchPictures();
+        create: (_) => ListCharViewModel(),
+        child: Consumer<ListCharViewModel>(
+          builder: (context, listCharViewModel, __) {
+            if (listCharViewModel.images == null){
+              listCharViewModel.fetchImages();
             }
 
-            if (listPictureViewModel.isLoading) {
+            if (listCharViewModel.isLoading) {
               return const Center(child: CircularProgressIndicator(),);
             }
 
-            if (listPictureViewModel.errorMessage != null) {
+            if (listCharViewModel.errorMessage != null) {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: const Text('Errore'),
-                    content: Text(listPictureViewModel.errorMessage!),
+                    content: Text(listCharViewModel.errorMessage!),
                     actions: [
                       OutlinedButton(
                         child: const Text('OK'),
@@ -59,15 +60,15 @@ class _ListPictureState extends State<ListPicture> {
             return SingleChildScrollView(
               child: StaggeredGrid.count(
                 crossAxisCount: 2,
-                children: listPictureViewModel.pictures!.map((e) =>
+                children: listCharViewModel.images!.map((e) =>
                     StaggeredGridTile.count(
                         crossAxisCellCount: 2,
-                        mainAxisCellCount: listPictureViewModel.pictures!.indexOf(e).isEven ? 2 : 1,
+                        mainAxisCellCount: listCharViewModel.images!.indexOf(e).isEven ? 2 : 1,
                         child: Container(
                           color: Colors.grey,
                           child: FadeInImage.memoryNetwork(
                             placeholder: kTransparentImage,
-                            image: "${listPictureViewModel.pictures![listPictureViewModel.pictures!.indexOf(e)].download_url}",
+                            image: "${listCharViewModel.images![listCharViewModel.images!.indexOf(e)]?.image?.medium}",
                             fit: BoxFit.cover,
                           ),
                         )

@@ -22,8 +22,18 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_staggered_grid_view: any
   transparent_image: ^2.0.1
+  flutter_dotenv: ^5.1.0
+  retrofit: ^4.0.1
+  provider: ^6.0.5
+  graphql_flutter: ^5.1.2
+  graphql: ^5.1.3
+  flutter_hooks: ^0.18.6
+  shared_preferences: ^2.2.0
+  json_annotation: ^4.8.0
 
 dev_dependencies:
+  retrofit_generator: '>=5.0.0 <6.0.0'
+  build_runner: '>=2.3.0 <4.0.0'
   flutter_test:
     sdk: flutter
 
@@ -33,6 +43,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  json_serializable: ^6.6.1
+  graphql_codegen: ^0.13.5
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -43,3 +55,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - lib/.env
