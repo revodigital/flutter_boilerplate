@@ -31,6 +31,10 @@ dependencies:
   shared_preferences: ^2.2.0
   json_annotation: ^4.8.0
   dashbook: ^0.1.12
+  atlassian_apis: ^0.13.0
+  shake: ^2.2.0
+  responsive_sizer: ^3.1.1
+  uuid: ^3.0.7
 
 dev_dependencies:
   retrofit_generator: '>=5.0.0 <6.0.0'

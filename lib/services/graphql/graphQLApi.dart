@@ -20,7 +20,7 @@ class GraphQLApiClient {
       for (var error in response.errors!) {
         if (error.extensions!["code"] == "FORBIDDEN"){
           TokenManager().clearTokens();
-          Navigator.pushAndRemoveUntil(MyApp.navigatorKey.currentContext!, MaterialPageRoute(builder: (BuildContext context){
+          Navigator.pushAndRemoveUntil(MyApp.preview.currentContext!, MaterialPageRoute(builder: (BuildContext context){
             return const ErrorView();
           }), (r){
             return false;

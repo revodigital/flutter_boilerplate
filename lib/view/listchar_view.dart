@@ -29,7 +29,7 @@ class _ListCharState extends State<ListChar> {
         create: (_) => ListCharViewModel(),
         child: Consumer<ListCharViewModel>(
           builder: (context, listCharViewModel, __) {
-            if (listCharViewModel.images == null){
+            if (listCharViewModel.images == null && context.mounted){
               listCharViewModel.fetchImages();
             }
 

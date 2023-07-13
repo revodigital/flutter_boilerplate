@@ -28,7 +28,7 @@ class _ListPictureState extends State<ListPicture> {
         create: (_) => ListPictureViewModel(),
         child: Consumer<ListPictureViewModel>(
           builder: (context, listPictureViewModel, __) {
-            if (listPictureViewModel.pictures == null){
+            if (listPictureViewModel.pictures == null && context.mounted){
               listPictureViewModel.fetchPictures();
             }
 
