@@ -3,10 +3,12 @@ name: Create and populate .env file
 on: [workflow_call]
 
 jobs:
-  build:
+  build_env:
     runs-on: macos-latest
     steps:
       - name: Create .env file
         run: |
           cat > assets/.env <<EOF
+          BACKEND_URL=${{ secrets.BACKEND_URL }}
+          API_KEY=${{ secrets.API_KEY }}
           EOF
