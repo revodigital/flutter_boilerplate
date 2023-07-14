@@ -3,7 +3,7 @@ name: Create and populate .env file
 on: [workflow_call]
 
 jobs:
-  build_.env:
+  build_env:
     runs-on: macos-latest
     steps:
       - name: env file creation
