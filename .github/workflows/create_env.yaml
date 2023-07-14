@@ -19,6 +19,9 @@ jobs:
           echo "ls -a ${{ github.workspace }}"
           ls -a ${{ github.workspace }}
         shell: bash
+  archive_env:
+    runs-on: ubuntu-latest
+    steps:
       - name: Archive .env file
         uses: actions/upload-artifact@v2
         with:
