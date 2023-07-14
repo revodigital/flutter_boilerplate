@@ -17,6 +17,7 @@ class TokenManager {
 
   void setAccessToken(String accessToken) async {
     final prefs = await SharedPreferences.getInstance();
+
     await prefs.setString(LocalStorageKeys.ACCESS_TOKEN, accessToken);
   }
 

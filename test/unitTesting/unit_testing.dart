@@ -1,5 +1,6 @@
 import 'package:flutter_revo_boilerplate/utils/TokenManager.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void tokenManagerTest() {
   String ACCESS_TOKEN = "access_token";
@@ -7,44 +8,34 @@ void tokenManagerTest() {
   String INSTANCE_ID = "instance_id";
 
   group('TokenManager', () {
-    test('Set access/refresh token and instanceId', () async {
+    test('Set all values of TokenManager', () async {
+      print("[Set all values of TokenManager]: Starting with mock values");
+      SharedPreferences.setMockInitialValues({});
       TokenManager tokenManager = TokenManager();
-      String? instanceId = await tokenManager.getInstanceId();
-      String? accessToken = await tokenManager.getAccessToken();
-      String? refreshToken = await tokenManager.getRefreshToken();
 
-      print('Changing TokenManager values');
+
+      print("[Set all values of TokenManager]: Setting all values");
       tokenManager.setAll(ACCESS_TOKEN, REFRESH_TOKEN, INSTANCE_ID);
 
       expect(await tokenManager.getInstanceId(), INSTANCE_ID);
       expect(await tokenManager.getAccessToken(), ACCESS_TOKEN);
       expect(await tokenManager.getRefreshToken(), REFRESH_TOKEN);
-
-      print('Restoring true TokenManager values');
-      if(instanceId != null && accessToken != null && refreshToken != null){
-        tokenManager.setAll(accessToken, refreshToken, instanceId);
-      } else {
-        tokenManager.clearTokens();
-      }
+      print("[Set all values of TokenManager]: Completed");
     });
 
-    test('Clearing values', () async {
+    test('Clear all values of TokenManager', () async {
+      print("[Clear all values of TokenManager]: Starting with mock values");
+      SharedPreferences.setMockInitialValues({});
       TokenManager tokenManager = TokenManager();
-      String? instanceId = await tokenManager.getInstanceId();
-      String? accessToken = await tokenManager.getAccessToken();
-      String? refreshToken = await tokenManager.getRefreshToken();
 
-      print('Changing TokenManager values');
+
+      print("[Clear all values of TokenManager]: Clearing all values");
       tokenManager.clearTokens();
 
       expect(await tokenManager.getInstanceId(), null);
       expect(await tokenManager.getAccessToken(), null);
       expect(await tokenManager.getRefreshToken(), null);
-
-      print('Restoring true TokenManager values');
-      if(instanceId != null && accessToken != null && refreshToken != null){
-        tokenManager.setAll(accessToken, refreshToken, instanceId);
-      }
+      print("[Clear all values of TokenManager]: Completed");
     });
   });
 }
