@@ -5,6 +5,7 @@ jobs:
   env_workflow:
     uses: ./.github/workflows/create_env.yaml
   flutter_test:
+    needs: env_workflow
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
