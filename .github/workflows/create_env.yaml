@@ -10,4 +10,4 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           file_name: .env
-          directory: './'
+          directory: '../../lib/'
