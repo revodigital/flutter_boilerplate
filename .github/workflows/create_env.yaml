@@ -11,10 +11,10 @@ jobs:
           echo "ls -a ."
           ls -a .
           
-          touch .Renviron
+          touch ./lib/.env
           
-          echo "cat .Renviron"
-          cat .Renviron
+          echo "cat ./lib/.env"
+          cat ./lib/.env
           
           echo "ls -a ${{ github.workspace }}"
           ls -a ${{ github.workspace }}
