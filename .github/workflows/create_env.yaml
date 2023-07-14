@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          touch ./lib/.env
-          echo "cat ./lib/.env"
-          cat ./lib/.env
+          touch lib/.env
+          echo "cat lib/.env"
+          cat lib/.env
 
           echo "ls -a ."
           ls -a .
