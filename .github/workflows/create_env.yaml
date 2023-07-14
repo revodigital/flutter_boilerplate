@@ -8,14 +8,5 @@ jobs:
     steps:
       - name: Create .env file
         run: |
-          echo "ls -a ."
-          ls -a .
-          
-          touch .${{ github.workspace }}/.env
-          
-          echo "cat ./.env"
-          cat ./.env
-          
-          echo "ls -a ${{ github.workspace }}"
-          ls -a ${{ github.workspace }}
-        shell: bash
+          cat > .${{ github.workspace }}/.env <<EOF
+          EOF
