@@ -1,0 +1,19 @@
+name: Create and populate .env file
+
+on: [workflow_call]
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          touch ./lib/.env
+          echo "cat ./lib/.env"
+          cat ./lib/.env
+
+          echo "ls -a ."
+          ls -a .
+
+          echo "ls -a ${{ github.workspace }}"
+          ls -a ${{ github.workspace }}
+        shell: bash
