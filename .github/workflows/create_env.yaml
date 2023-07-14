@@ -11,9 +11,9 @@ jobs:
           echo "ls -a ."
           ls -a .
           
-          touch .${{ github.workspace }}/lib/.env
+          touch .${{ github.workspace }}/.env
           
-          echo "cat ./lib/.env"
+          echo "cat ./.env"
           cat ./lib/.env
           
           echo "ls -a ${{ github.workspace }}"
