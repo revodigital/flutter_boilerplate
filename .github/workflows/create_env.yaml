@@ -20,7 +20,7 @@ jobs:
           ls -a ${{ github.workspace }}
         shell: bash
       - name: Archive .env file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: .env
           path: .env
