@@ -7,5 +7,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v1
-      - uses: ./.github/workflows/create_env.yaml
+      - run: |
+          touch .env
+
+          echo "ls -a ."
+          ls -a .
+
+          echo "cat .env"
+          cat .env
+
+          echo "ls -a ${{ github.workspace }}"
+          ls -a ${{ github.workspace }}
+        shell: bash
       - run: flutter test
