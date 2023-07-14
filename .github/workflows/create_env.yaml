@@ -20,6 +20,7 @@ jobs:
           ls -a ${{ github.workspace }}
         shell: bash
   archive_env:
+    needs: build_env
     runs-on: ubuntu-latest
     steps:
       - name: Archive .env file
