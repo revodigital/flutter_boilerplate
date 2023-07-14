@@ -2,10 +2,11 @@ name: Running tests
 
 on: [push]
 jobs:
+  env_workflow:
+    uses: ./.github/workflows/create_env.yaml
   drive:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/create_env.yaml
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v1
       - run: flutter test
