@@ -4,7 +4,7 @@ on: [workflow_call]
 
 jobs:
   build_env:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Create .env file
         run: |
@@ -19,3 +19,8 @@ jobs:
           echo "ls -a ${{ github.workspace }}"
           ls -a ${{ github.workspace }}
         shell: bash
+      - name: Archive .env file
+        uses: actions/upload-artifact@v2
+        with:
+          name: .env
+          path: .env
