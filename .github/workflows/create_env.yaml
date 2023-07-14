@@ -3,11 +3,10 @@ name: Create and populate .env file
 on: [workflow_call]
 
 jobs:
-  build_env:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: macos-latest
     steps:
-      - name: env file creation
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          file_name: .env
-          directory: '../../lib/'
+      - name: Create .env file
+        run: |
+          cat > assets/.env <<EOF
+          EOF
