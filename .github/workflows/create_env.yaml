@@ -4,7 +4,7 @@ on: [workflow_call]
 
 jobs:
   build_env:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: env file creation
         uses: SpicyPizza/create-envfile@v1.3
