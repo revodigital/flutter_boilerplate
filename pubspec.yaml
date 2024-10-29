@@ -7,7 +7,7 @@ description: Flutter Revo Boilerplate
 version: 0.0.1
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ^3.4.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -18,38 +18,56 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   cupertino_icons: ^1.0.2
-  flutter_staggered_grid_view: any
-  transparent_image: ^2.0.1
   flutter_dotenv: ^5.1.0
-  retrofit: ^4.0.1
   provider: ^6.0.5
-  graphql_flutter: ^5.1.2
-  graphql: ^5.1.3
-  flutter_hooks: ^0.18.6
+  flutter_hooks: ^0.20.5
   shared_preferences: ^2.2.0
-  json_annotation: ^4.8.0
-  dashbook: ^0.1.12
-  atlassian_apis: ^0.13.0
-  shake: ^2.2.0
+  json_annotation: ^4.9.0
   responsive_sizer: ^3.1.1
-  uuid: ^3.0.7
+  uuid: ^4.5.1
+  chopper: ^8.0.0
+  flutter_native_splash: ^2.4.2
+  logger: ^2.4.0
+  flutter_screenutil: ^5.9.3
+  adaptive_theme: ^3.6.0
+  intl: ^0.19.0
+  intl_translation: ^0.20.0
+  go_router: ^14.3.0
+  mocktail: ^1.0.4
+  calendar_date_picker2: ^1.1.7
+  geolocator: ^13.0.1
+  permission_handler: ^11.3.1
+  flutter_svg: ^2.0.10+1
+  pinput: ^5.0.0
+  mobile_scanner: ^6.0.2
+  skeletonizer: ^1.4.2
+  font_awesome_flutter: ^10.7.0
+  flutter_cache_manager: ^3.4.1
+  cached_network_image: ^3.4.1
+  assets:
+    path: assets
+  widgetbook_workspace:
+    path: ./widgetbook
+
+dependency_overrides:
+  font_awesome_flutter:
+    path: /Users/giosuetrapani/Documenti/Revo/fontAwesomePro/font_awesome_flutter-revo
 
 dev_dependencies:
-  retrofit_generator: '>=5.0.0 <6.0.0'
-  build_runner: '>=2.3.0 <4.0.0'
+  change_app_package_name: ^1.1.0
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-  json_serializable: ^6.6.1
-  graphql_codegen: ^0.13.5
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.1
+  build_runner: ^2.4.9
+  chopper_generator: ^8.0.0
+  json_serializable: ^6.7.1
+  swagger_dart_code_generator: ^3.0.1
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -57,6 +75,7 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+  generate: true
   uses-material-design: true
   assets:
     - assets/
