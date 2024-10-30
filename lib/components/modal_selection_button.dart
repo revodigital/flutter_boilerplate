@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_revo_boilerplate/components/calendar_modal.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/utils/typography.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -33,9 +30,9 @@ class CustomModalSelectionButton extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(4))),
             border: Border.all(
                 width: Adaptive.px(Adaptive.px(1)),
-                color: CustomColors.neutral[80]!
+                color: CustomColors.neutral(CustomNeutralKeys.k80)
             ),
-            color: CustomColors.neutral[100]
+            color: CustomColors.neutral(CustomNeutralKeys.k100)
         ),
         child: DropdownButton(
           items: disabled ? null : list,
@@ -44,14 +41,14 @@ class CustomModalSelectionButton extends StatelessWidget {
           },
           padding: EdgeInsets.symmetric(horizontal: Adaptive.px(16), vertical: Adaptive.px(3)),
           underline: SizedBox(),
-          style: CustomTypography.body['1-medium'],
+          style: CustomTypography.body(CustomBodyKeys.k1Medium),
           hint: Text(
             hint,
-            style: CustomTypography.body['1-medium']!.copyWith(
-              color: CustomColors.text[30]!.withOpacity(0.8)
+            style: CustomTypography.body(CustomBodyKeys.k1Medium).copyWith(
+              color: CustomColors.text(CustomTextKeys.k30).withOpacity(0.8)
             ),
           ),
-          dropdownColor: CustomColors.neutral[100],
+          dropdownColor: CustomColors.neutral(CustomNeutralKeys.k100),
           icon: iconWidget,
         ),
       ),

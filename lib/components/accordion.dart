@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/utils/typography.dart';
@@ -38,15 +37,15 @@ class _CustomAccordion extends State<CustomAccordion> {
               Icon(
                 _showContent ? Icons.keyboard_arrow_down_outlined: Icons.keyboard_arrow_right_outlined,
                 size: Adaptive.px(24),
-                color: CustomColors.neutral[10],
+                color: CustomColors.neutral(CustomNeutralKeys.k100),
               ),
               SizedBox(
                 width: Adaptive.px(8),
               ),
               Text(
                 widget.title,
-                style: CustomTypography.body['2-semibold']!.copyWith(
-                    color: CustomColors.neutral[10]
+                style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
+                    color: CustomColors.neutral(CustomNeutralKeys.k100)
                 ),
               )
             ],
@@ -58,8 +57,8 @@ class _CustomAccordion extends State<CustomAccordion> {
               padding: EdgeInsets.only(top: Adaptive.px(10)),
               child: Text(
                 widget.description,
-                style: CustomTypography.body['2-regular']!.copyWith(
-                    color: CustomColors.neutral[30]
+                style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
+                    color: CustomColors.neutral(CustomNeutralKeys.k100)
                 ),
               ),
             ),

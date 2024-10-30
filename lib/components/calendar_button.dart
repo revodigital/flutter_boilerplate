@@ -52,22 +52,22 @@ class CustomCalendarButton extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(4))),
               border: Border.all(
                   width: Adaptive.px(Adaptive.px(1)),
-                  color: CustomColors.neutral[80]!
+                  color: CustomColors.neutral(CustomNeutralKeys.k80)
               ),
-              color: CustomColors.neutral[100]
+              color: CustomColors.neutral(CustomNeutralKeys.k100)
           ),
           child: Wrap(
             children: [
               Text(
                 _buildDate(),
-                style: CustomTypography.body['1-medium']!.copyWith(
-                    color: CustomColors.text[list == null ? 40 : 30]!.withOpacity(list == null ? 0.8 : 1)
+                style: CustomTypography.body(CustomBodyKeys.k1Medium).copyWith(
+                    color: CustomColors.text(list == null ? CustomTextKeys.k40 : CustomTextKeys.k30).withOpacity(list == null ? 0.8 : 1)
                 ),
               ),
               SizedBox(width: Adaptive.px(12),),
               Icon(
                 FontAwesomeIcons.calendar,
-                color: CustomColors.text[40],
+                color: CustomColors.text(CustomTextKeys.k40),
                 size: Adaptive.px(20),
               )
             ],

@@ -1,3 +1,4 @@
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
@@ -13,14 +14,14 @@ class CustomSearchBar extends StatefulWidget {
   final bool? disabled;
 
   const CustomSearchBar({
-    Key? key,
+    super.key,
     required this.label,
     required this.leadingWidget,
     this.actionWidget,
     required this.onValueChange,
     this.controller,
     this.disabled,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomSearchBar> createState() => _CustomSearchBar();
@@ -50,23 +51,23 @@ class _CustomSearchBar extends State<CustomSearchBar> {
       decoration: InputDecoration(
         hintText: widget.label,
         prefixIcon: widget.leadingWidget,
-        fillColor: CustomColors.neutral[100],
+        fillColor: CustomColors.neutral(CustomNeutralKeys.k100),
         contentPadding: EdgeInsets.all(Adaptive.px(16)),
         border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: CustomColors.neutral[80]!,
+            color: CustomColors.neutral(CustomNeutralKeys.k80),
           ),
           borderRadius: BorderRadius.circular(Adaptive.px(4))
         ),
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: CustomColors.neutral[80]!,
+              color: CustomColors.neutral(CustomNeutralKeys.k80),
             ),
             borderRadius: BorderRadius.circular(Adaptive.px(4))
         ),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: CustomColors.primary[40]!,
+              color: CustomColors.primary(CustomPrimaryKeys.k40),
             ),
             borderRadius: BorderRadius.circular(Adaptive.px(4))
         )
@@ -75,8 +76,8 @@ class _CustomSearchBar extends State<CustomSearchBar> {
         setState(() {});
         widget.onValueChange(text);
       },
-      style: CustomTypography.body['1-medium']!.copyWith(
-        color: CustomColors.text[30]
+      style: CustomTypography.body(CustomBodyKeys.k1Medium).copyWith(
+        color: CustomColors.text(CustomTextKeys.k30)
       ),
     );
   }

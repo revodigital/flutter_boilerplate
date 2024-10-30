@@ -1,6 +1,4 @@
 {
     "helloWorld": "Ciao mondo!",
-    "@helloWorld": {
-        "description": "The conventional newborn programmer greeting"
-    }
+    "wizards": "Maghi"
 }

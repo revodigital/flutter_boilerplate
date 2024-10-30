@@ -15,7 +15,7 @@ Widget buildPrimaryButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(
@@ -27,7 +27,7 @@ Widget buildPrimaryButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(
@@ -56,7 +56,7 @@ Widget buildSecondaryButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(
@@ -68,7 +68,7 @@ Widget buildSecondaryButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(
@@ -97,7 +97,7 @@ Widget buildTertiaryButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(
@@ -109,7 +109,7 @@ Widget buildTertiaryButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(
@@ -138,7 +138,7 @@ Widget buildAlertButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(
@@ -150,7 +150,7 @@ Widget buildAlertButtonUseCase(BuildContext context) {
         onPressed: () {
         },
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomButton(

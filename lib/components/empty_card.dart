@@ -40,13 +40,13 @@ class CustomEmptyCard extends StatelessWidget {
         ],
         if (type == CustomEmptyCardType.full || type == CustomEmptyCardType.onlyTitle) Text(
           title,
-          style: CustomTypography.title[3],
+          style: CustomTypography.title(CustomTitleKeys.k3),
         ),
         SizedBox(height: Adaptive.px(type == CustomEmptyCardType.full ? 8 : 0),),
         if (type == CustomEmptyCardType.full || type == CustomEmptyCardType.onlyDescription) Text(
           description,
-          style: CustomTypography.body['2-regular']!.copyWith(
-              color: CustomColors.text[40],
+          style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
+              color: CustomColors.text(CustomTextKeys.k40),
           ),
           textAlign: textAlign ?? TextAlign.center,
         ),

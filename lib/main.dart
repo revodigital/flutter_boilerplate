@@ -129,6 +129,7 @@ class _MC2App extends State<MainApp> {
           );
 
           prefs.setString('logged_as', auth.toJsonString());
+          // ignore: use_build_context_synchronously
           MainApp.replaceScreen(context, AppRouterRoutes.home.value, updateScreen: (){});
         } catch (e, s) {
           Logger().e('[MAIN_2]: $e $s');
@@ -164,7 +165,7 @@ class _MC2App extends State<MainApp> {
                 title: 'Boilerplate',
                 theme: theme,
                 darkTheme: darkTheme,
-                color: CustomColors.primary[50],
+                color: CustomColors.primary(CustomPrimaryKeys.k40),
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
                 routerConfig: AppRouter.getRouter(),

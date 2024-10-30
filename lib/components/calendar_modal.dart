@@ -67,7 +67,7 @@ class _CustomCalendarModal extends State<CustomCalendarModal> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(Adaptive.px(99)), topRight: Radius.circular(Adaptive.px(99))),
-        color: CustomColors.neutral[100],
+        color: CustomColors.neutral(CustomNeutralKeys.k100),
       ),
       padding: EdgeInsets.all(Adaptive.px(16)),
       child: Column(
@@ -77,8 +77,8 @@ class _CustomCalendarModal extends State<CustomCalendarModal> {
             children: [
               Text(
                 widget.type == CustomCalendarModalType.month ? 'Seleziona un mese' : widget.type == CustomCalendarModalType.multipleDay ? 'Seleziona un range settimanale' : 'Seleziona un giorno',
-                style: CustomTypography.title[3]!.copyWith(
-                    color: CustomColors.text[20]
+                style: CustomTypography.title(CustomTitleKeys.k3).copyWith(
+                    color: CustomColors.text(CustomTextKeys.k20)
                 ),
               ),
               CustomIconButton(
@@ -104,8 +104,8 @@ class _CustomCalendarModal extends State<CustomCalendarModal> {
                           Text(
                             '${i.year}'.toLowerCase(),
                             textAlign: TextAlign.left,
-                            style: CustomTypography.body['2-semibold']!.copyWith(
-                                color: CustomColors.text[40]
+                            style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
+                                color: CustomColors.text(CustomTextKeys.k40)
                             ),
                           )
                         ],
@@ -147,8 +147,8 @@ class _CustomCalendarModal extends State<CustomCalendarModal> {
                   weekdayLabelBuilder: ({bool? isScrollViewTopHeader, required int weekday}) {
                     return Text(
                       _days[weekday],
-                      style: CustomTypography.body['2-regular']!.copyWith(
-                        color: CustomColors.text[40]
+                      style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
+                        color: CustomColors.text(CustomTextKeys.k40)
                       ),
                     );
                   },
@@ -160,8 +160,8 @@ class _CustomCalendarModal extends State<CustomCalendarModal> {
                         Text(
                           '${_months[d.month - 1]} ${d.year}'.toLowerCase(),
                           textAlign: TextAlign.left,
-                          style: CustomTypography.body['2-semibold']!.copyWith(
-                            color: CustomColors.text[40]
+                          style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
+                            color: CustomColors.text(CustomTextKeys.k40)
                           ),
                         )
                       ],
@@ -172,10 +172,10 @@ class _CustomCalendarModal extends State<CustomCalendarModal> {
                   lastDate: widget.lastDate,
                   firstDate: widget.firstDate,
                   currentDate: widget.currentDate,
-                  selectedDayHighlightColor: CustomColors.primary[40],
-                  selectedRangeHighlightColor: CustomColors.neutral[90],
+                  selectedDayHighlightColor: CustomColors.primary(CustomPrimaryKeys.k40),
+                  selectedRangeHighlightColor: CustomColors.neutral(CustomNeutralKeys.k90),
                   dayBorderRadius: BorderRadius.zero,
-                  daySplashColor: CustomColors.neutral[70],
+                  daySplashColor: CustomColors.neutral(CustomNeutralKeys.k70),
                   dayMaxWidth: Adaptive.px(48)
                 ),
                 onValueChanged: (List<DateTime> l) {
@@ -241,7 +241,7 @@ class _CustomCalendarTransactionModal extends State<CustomCalendarTransactionMod
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(Adaptive.px(99)), topRight: Radius.circular(Adaptive.px(99))),
-        color: CustomColors.neutral[100],
+        color: CustomColors.neutral(CustomNeutralKeys.k100),
       ),
       padding: EdgeInsets.all(Adaptive.px(16)),
       child: Column(
@@ -251,8 +251,8 @@ class _CustomCalendarTransactionModal extends State<CustomCalendarTransactionMod
             children: [
               Text(
                 'Seleziona un giorno',
-                style: CustomTypography.title[3]!.copyWith(
-                    color: CustomColors.text[20]
+                style: CustomTypography.title(CustomTitleKeys.k3).copyWith(
+                    color: CustomColors.text(CustomTextKeys.k20)
                 ),
               ),
               CustomIconButton(
@@ -274,8 +274,8 @@ class _CustomCalendarTransactionModal extends State<CustomCalendarTransactionMod
                   weekdayLabelBuilder: ({bool? isScrollViewTopHeader, required int weekday}) {
                     return Text(
                       _days[weekday],
-                      style: CustomTypography.body['2-regular']!.copyWith(
-                          color: CustomColors.text[40]
+                      style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
+                          color: CustomColors.text(CustomTextKeys.k40)
                       ),
                     );
                   },
@@ -287,8 +287,8 @@ class _CustomCalendarTransactionModal extends State<CustomCalendarTransactionMod
                         Text(
                           '${_months[d.month - 1]} ${d.year}'.toLowerCase(),
                           textAlign: TextAlign.left,
-                          style: CustomTypography.body['2-semibold']!.copyWith(
-                              color: CustomColors.text[40]
+                          style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
+                              color: CustomColors.text(CustomTextKeys.k40)
                           ),
                         )
                       ],
@@ -299,10 +299,10 @@ class _CustomCalendarTransactionModal extends State<CustomCalendarTransactionMod
                   lastDate: widget.lastDate,
                   firstDate: widget.firstDate,
                   currentDate: widget.currentDate,
-                  selectedDayHighlightColor: CustomColors.primary[40],
-                  selectedRangeHighlightColor: CustomColors.neutral[90],
+                  selectedDayHighlightColor: CustomColors.primary(CustomPrimaryKeys.k40),
+                  selectedRangeHighlightColor: CustomColors.neutral(CustomNeutralKeys.k90),
                   dayBorderRadius: BorderRadius.zero,
-                  daySplashColor: CustomColors.neutral[70],
+                  daySplashColor: CustomColors.neutral(CustomNeutralKeys.k70),
                   dayMaxWidth: Adaptive.px(48)
               ),
               onValueChanged: (List<DateTime> l) {

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_revo_boilerplate/model/auth_model.dart';
@@ -53,7 +52,7 @@ class _CustomBottomAppBar extends State<CustomBottomAppBar> {
     required bool disabled,
     int badgeCount = 0,
   }) {
-    Color color = isSelected ? Colors.white : CustomColors.neutral[80]!;
+    Color color = isSelected ? Colors.white : CustomColors.neutral(CustomNeutralKeys.k80);
 
     return Opacity(
       opacity: disabled ? 0.5 : 1,
@@ -71,7 +70,7 @@ class _CustomBottomAppBar extends State<CustomBottomAppBar> {
               children: <Widget>[
                 Icon(icon, color: color, size: Adaptive.px(20),),
                 SizedBox(height: Adaptive.px(8),),
-                Text(text, style: isSelected ? CustomTypography.caption['bold']!.copyWith(color: color) : CustomTypography.caption['medium']!.copyWith(color: color)),
+                Text(text, style: isSelected ? CustomTypography.caption(CustomCaptionKeys.kSemibold).copyWith(color: color) : CustomTypography.caption(CustomCaptionKeys.kSemibold).copyWith(color: color)),
               ],
             ),
             Positioned(
@@ -79,7 +78,7 @@ class _CustomBottomAppBar extends State<CustomBottomAppBar> {
               right: Adaptive.px(6),
               child: Container(
                 decoration: BoxDecoration(
-                  color: CustomColors.primary[50],
+                  color: CustomColors.primary(CustomPrimaryKeys.k40),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 width: Adaptive.px(14),
@@ -105,7 +104,7 @@ class _CustomBottomAppBar extends State<CustomBottomAppBar> {
           children: <Widget>[
             Icon(icon, color: color, size: Adaptive.px(20),),
             SizedBox(height: Adaptive.px(8),),
-            Text(text, style: isSelected ? CustomTypography.caption['bold']!.copyWith(color: color) : CustomTypography.caption['medium']!.copyWith(color: color)),
+            Text(text, style: isSelected ? CustomTypography.caption(CustomCaptionKeys.kSemibold).copyWith(color: color) : CustomTypography.caption(CustomCaptionKeys.kSemibold).copyWith(color: color)),
           ],
         ),
       ),
@@ -123,7 +122,7 @@ class _CustomBottomAppBar extends State<CustomBottomAppBar> {
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(Adaptive.px(20)), topRight: Radius.circular(Adaptive.px(20))),
         child: BottomAppBar(
-          color: CustomColors.neutral[10],
+          color: CustomColors.neutral(CustomNeutralKeys.k100),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[

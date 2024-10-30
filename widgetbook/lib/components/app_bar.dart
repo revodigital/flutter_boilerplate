@@ -49,7 +49,7 @@ Widget buildAppBarUseCase(BuildContext context) {
       CustomAppBar(
         title: '',
         onPressBack: () {},
-        actions: [],
+        actions: const [],
       ),
     ],
   );

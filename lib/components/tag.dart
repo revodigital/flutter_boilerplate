@@ -30,21 +30,21 @@ class CustomTag extends StatelessWidget {
           if (type == CustomTagType.utilityElectricity) ...[
             Icon(
               FontAwesomeIcons.plug,
-              color: CustomColors.violet[50],
+              color: CustomColors.violet(CustomVioletKeys.k50),
               size: Adaptive.px(20),
             )
           ] else ...[
             Icon(
               FontAwesomeIcons.droplet,
-              color: CustomColors.blue[50],
+              color: CustomColors.blue(CustomBlueKeys.k50),
               size: Adaptive.px(20),
             )
           ],
           SizedBox(width: Adaptive.px(8),),
           Text(
             type == CustomTagType.utilityElectricity ? 'ENERGIA' : 'ACQUA',
-            style: CustomTypography.body['2-regular']!.copyWith(
-              color: CustomColors.text[40]
+            style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
+              color: CustomColors.text(CustomTextKeys.k40)
             ),
           )
         ],
@@ -54,12 +54,12 @@ class CustomTag extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: Adaptive.px(4), horizontal: Adaptive.px(12)),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(4))),
-            color: type == CustomTagType.info ? CustomColors.neutral[95] : type == CustomTagType.warning ? CustomColors.warning[30]!.withOpacity(0.1) : CustomColors.success[30]!.withOpacity(0.1)
+            color: type == CustomTagType.info ? CustomColors.neutral(CustomNeutralKeys.k95) : type == CustomTagType.warning ? CustomColors.warning(CustomWarningKeys.k30).withOpacity(0.1) : CustomColors.success(CustomSuccessKeys.k30).withOpacity(0.1)
         ),
         child: Text(
           label,
-          style: CustomTypography.caption['semibold']!.copyWith(
-              color: type == CustomTagType.info ? CustomColors.text[30] : type == CustomTagType.warning ? CustomColors.warning[30] : CustomColors.success[30]
+          style: CustomTypography.caption(CustomCaptionKeys.kSemibold).copyWith(
+              color: type == CustomTagType.info ? CustomColors.text(CustomTextKeys.k30) : type == CustomTagType.warning ? CustomColors.warning(CustomWarningKeys.k30) : CustomColors.success(CustomSuccessKeys.k30)
           ),
         ),
       );

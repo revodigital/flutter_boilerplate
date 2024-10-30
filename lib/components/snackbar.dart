@@ -22,7 +22,7 @@ class CustomSnackbar {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(4))),
               border: Border.all(
-                color: type == CustomSnackbarType.normal ? CustomColors.neutral[90]! : CustomColors.error[30]!
+                color: type == CustomSnackbarType.normal ? CustomColors.neutral(CustomNeutralKeys.k90) : CustomColors.error(CustomErrorKeys.k30)
               )
             ),
             child: Padding(
@@ -34,20 +34,20 @@ class CustomSnackbar {
                   Icon(
                     type == CustomSnackbarType.normal ? FontAwesomeIcons.circleCheck : FontAwesomeIcons.circleExclamation,
                     size: Adaptive.px(20),
-                    color: type == CustomSnackbarType.normal ? CustomColors.success[30]! : CustomColors.neutral[100]!,
+                    color: type == CustomSnackbarType.normal ? CustomColors.success(CustomSuccessKeys.k30) : CustomColors.neutral(CustomNeutralKeys.k100),
                   ),
                   SizedBox(width: Adaptive.px(8),),
                   Text(
                     text,
-                    style: CustomTypography.body['2-semibold']!.copyWith(
-                        color: type == CustomSnackbarType.normal ? CustomColors.text[30]! : CustomColors.neutral[100]!
+                    style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
+                        color: type == CustomSnackbarType.normal ? CustomColors.text(CustomTextKeys.k30) : CustomColors.neutral(CustomNeutralKeys.k100)
                     ),
                   )
                 ],
               ),
             ),
           ),
-          backgroundColor: type == CustomSnackbarType.normal ? CustomColors.neutral[95]! : CustomColors.error[30]!,
+          backgroundColor: type == CustomSnackbarType.normal ? CustomColors.neutral(CustomNeutralKeys.k95) : CustomColors.error(CustomErrorKeys.k30),
           duration: const Duration(seconds: 2),
           padding: EdgeInsets.zero,
           margin: EdgeInsets.only(bottom: Adaptive.px(29), left: Adaptive.px(24), right: Adaptive.px(24)),

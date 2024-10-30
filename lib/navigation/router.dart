@@ -79,7 +79,7 @@ class ModalPage extends Page {
             topLeft: Radius.circular(Adaptive.px(20)),
             topRight: Radius.circular(Adaptive.px(20))
         ),
-        color: CustomColors.neutral[100],
+        color: CustomColors.neutral(CustomNeutralKeys.k100),
       ),
       child: fullPage ? child : Wrap(
         children: [

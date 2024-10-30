@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/utils/typography.dart';
@@ -43,9 +42,9 @@ class CustomValueSelector extends StatelessWidget {
                     width: Adaptive.px(24),
                     height: Adaptive.px(24),
                     decoration: BoxDecoration(
-                        color: activeValue >= (e.key + 1) ? CustomColors.primary[50]! : CustomColors.neutral[100]!,
+                        color: activeValue >= (e.key + 1) ? CustomColors.primary(CustomPrimaryKeys.k40) : CustomColors.neutral(CustomNeutralKeys.k100),
                         borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(100))),
-                        border: Border.all(color: CustomColors.primary[50]!, width: Adaptive.px(1))
+                        border: Border.all(color: CustomColors.primary(CustomPrimaryKeys.k40), width: Adaptive.px(1))
                     ),
                   ),
                 ),
@@ -60,20 +59,20 @@ class CustomValueSelector extends StatelessWidget {
         children: [
           Text(
             activeValue.toString(),
-            style: CustomTypography.body['2-bold']!.copyWith(
-              color: CustomColors.primary[50]
+            style: CustomTypography.body(CustomBodyKeys.k2Bold).copyWith(
+              color: CustomColors.primary(CustomPrimaryKeys.k40)
             ),
           ),
           SizedBox(width: Adaptive.px(8),),
           SizedBox(
             width: Adaptive.px(200),
             child: Slider(
-              activeColor: CustomColors.primary[50]!,
+              activeColor: CustomColors.primary(CustomPrimaryKeys.k40),
               min: minValue.toDouble(),
               max: maxValue.toDouble(),
               value: activeValue,
               divisions: (maxValue - minValue) * 2,
-              inactiveColor: CustomColors.neutral[90],
+              inactiveColor: CustomColors.neutral(CustomNeutralKeys.k90),
               label: activeValue.toStringAsFixed(1),
               onChanged: (double value) {
                 onChange(value);

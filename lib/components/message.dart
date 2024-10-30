@@ -25,7 +25,7 @@ class CustomMessage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(8))),
-        color: type == CustomMessageType.error ? CustomColors.error[30] : CustomColors.neutral[98]
+        color: type == CustomMessageType.error ? CustomColors.error(CustomErrorKeys.k30) : CustomColors.neutral(CustomNeutralKeys.k98)
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: Adaptive.px(12), horizontal: Adaptive.px(16)),
@@ -35,12 +35,12 @@ class CustomMessage extends StatelessWidget {
           children: [
             Text(
               title,
-              style: CustomTypography.title[3]!.copyWith(color: type == CustomMessageType.error ? CustomColors.neutral[100] : CustomColors.neutral[30]),
+              style: CustomTypography.title(CustomTitleKeys.k3).copyWith(color: type == CustomMessageType.error ? CustomColors.neutral(CustomNeutralKeys.k100) : CustomColors.neutral(CustomNeutralKeys.k100)),
             ),
             SizedBox(height: Adaptive.px(4),),
             Text(
               description,
-              style: CustomTypography.body['2-regular']!.copyWith(color: type == CustomMessageType.error ? CustomColors.neutral[100] : CustomColors.neutral[30]),
+              style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(color: type == CustomMessageType.error ? CustomColors.neutral(CustomNeutralKeys.k100) : CustomColors.neutral(CustomNeutralKeys.k100)),
             )
           ],
         ),

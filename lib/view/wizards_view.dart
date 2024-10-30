@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/api/generated/openapi.models.swagger.dart';
 import 'package:flutter_revo_boilerplate/components/background.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_revo_boilerplate/view_model/wizards_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../components/app_bar.dart';
 import '../components/empty_card.dart';
@@ -52,9 +52,9 @@ class WizardView extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: Adaptive.px(24)),
                       child: Text(
-                        'Wizards',
-                        style: CustomTypography.title[2]!.copyWith(
-                            color: CustomColors.text[20]
+                        AppLocalizations.of(context)!.wizards,
+                        style: CustomTypography.title(CustomTitleKeys.k2).copyWith(
+                            color: CustomColors.text(CustomTextKeys.k20)
                         ),
                       ),
                     ),
@@ -73,8 +73,8 @@ class WizardView extends StatelessWidget {
                         ] : viewModel.wizards.isNotEmpty ? [
                           Text(
                             'Qui puoi trovare i Maghi.',
-                            style: CustomTypography.body['2-regular']!.copyWith(
-                                color: CustomColors.text[40]
+                            style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
+                                color: CustomColors.text(CustomTextKeys.k40)
                             ),
                           ),
                           SizedBox(
@@ -113,7 +113,7 @@ class WizardView extends StatelessWidget {
                                 child: Icon(
                                   FontAwesomeIcons.boxOpen,
                                   size: Adaptive.px(83),
-                                  color: CustomColors.neutral[70],
+                                  color: CustomColors.neutral(CustomNeutralKeys.k70),
                                 ),
                               ),
                               type: CustomEmptyCardType.onlyDescription,

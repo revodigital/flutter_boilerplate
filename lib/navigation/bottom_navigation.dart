@@ -11,8 +11,8 @@ class _BottomNavigation extends State<BottomNavigation> {
   int _selectedIndex = 0;
 
   static final Map _widgetOptions = {
-    0: {"label": "REST", "widget": Container(), "icon": Icon(Icons.api)},
-    1: {"label": "GraphQL", "widget": Container(), "icon": Icon(Icons.graphic_eq)}
+    0: {'label': 'REST', 'widget': Container(), 'icon': Icon(Icons.api)},
+    1: {'label': 'GraphQL', 'widget': Container(), 'icon': Icon(Icons.graphic_eq)}
   };
 
   void _onItemTapped(int index) {
@@ -24,11 +24,11 @@ class _BottomNavigation extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetOptions[_selectedIndex]["widget"],
+      body: _widgetOptions[_selectedIndex]['widget'],
       bottomNavigationBar: BottomNavigationBar(
         items: _widgetOptions.values.map((value) => BottomNavigationBarItem(
-          icon: value["icon"],
-          label: value["label"]
+          icon: value['icon'],
+          label: value['label']
         )).toList(),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

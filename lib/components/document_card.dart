@@ -19,8 +19,8 @@ class CustomDocumentCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: CustomColors.neutral[90],
-        border: Border.all(color: CustomColors.neutral[95]!, width: 1),
+        color: CustomColors.neutral(CustomNeutralKeys.k90),
+        border: Border.all(color: CustomColors.neutral(CustomNeutralKeys.k95), width: 1),
         borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(10)))
       ),
       padding: EdgeInsets.symmetric(
@@ -32,14 +32,14 @@ class CustomDocumentCard extends StatelessWidget {
         children: [
           Text(
             name,
-            style: CustomTypography.body['2-semibold']!.copyWith(
-              color: CustomColors.text[40]
+            style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
+              color: CustomColors.text(CustomTextKeys.k40)
             ),
           ),
           Icon(
             FontAwesomeIcons.download,
             size: Adaptive.px(20),
-            color: CustomColors.text[40],
+            color: CustomColors.text(CustomTextKeys.k40),
           )
         ],
       ),

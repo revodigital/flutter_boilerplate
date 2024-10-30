@@ -27,7 +27,7 @@ class CustomListTile extends StatelessWidget {
           border: Border(
             bottom: BorderSide(
               width: Adaptive.px(1),
-              color: CustomColors.neutral[80]!
+              color: CustomColors.neutral(CustomNeutralKeys.k80)
             )
           ),
         ),
@@ -43,14 +43,14 @@ class CustomListTile extends StatelessWidget {
                   Icon(
                     iconData,
                     size: Adaptive.px(20),
-                    color: CustomColors.text[40],
+                    color: CustomColors.text(CustomTextKeys.k40),
                   ),
                   SizedBox(width: Adaptive.px(12),)
                 ],
                 Text(
                   label,
-                  style: CustomTypography.body['1-semibold']!.copyWith(
-                    color: CustomColors.text[40]
+                  style: CustomTypography.body(CustomBodyKeys.k1Semibold).copyWith(
+                    color: CustomColors.text(CustomTextKeys.k40)
                   ),
                 )
               ],
@@ -58,7 +58,7 @@ class CustomListTile extends StatelessWidget {
             Icon(
               FontAwesomeIcons.angleRight,
               size: Adaptive.px(20),
-              color: CustomColors.text[40],
+              color: CustomColors.text(CustomTextKeys.k40),
             ),
           ],
         ),

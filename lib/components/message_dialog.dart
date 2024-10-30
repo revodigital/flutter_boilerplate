@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/components/button.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
@@ -38,7 +37,7 @@ class _CustomMessageDialog extends State<CustomMessageDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Adaptive.px(20)), side: BorderSide(color: CustomColors.neutral[90]!, width: 1)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Adaptive.px(20)), side: BorderSide(color: CustomColors.neutral(CustomNeutralKeys.k90), width: 1)),
       insetPadding: EdgeInsets.all(Adaptive.px(24)),
       child: Container(
         width: double.infinity,
@@ -49,8 +48,8 @@ class _CustomMessageDialog extends State<CustomMessageDialog> {
           children: [
             Text(
               widget.title,
-              style: CustomTypography.title[3]!.copyWith(
-                  color: CustomColors.text[20]
+              style: CustomTypography.title(CustomTitleKeys.k3).copyWith(
+                  color: CustomColors.text(CustomTextKeys.k20)
               ),
             ),
             SizedBox(height: Adaptive.px(24),),

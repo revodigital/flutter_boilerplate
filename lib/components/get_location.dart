@@ -36,7 +36,7 @@ class CustomGetLocation extends StatelessWidget {
                 child: Icon(
                   closeIcon,
                   size: Adaptive.px(24),
-                  color: CustomColors.neutral[30],
+                  color: CustomColors.neutral(CustomNeutralKeys.k100),
                 ),
               ),
               SizedBox(height: Adaptive.px(60),),
@@ -47,13 +47,13 @@ class CustomGetLocation extends StatelessWidget {
               SizedBox(height: Adaptive.px(24),),
               Text(
                 'Attiva la geolocalizzazione per risultati più precisi',
-                style: CustomTypography.title[1],
+                style: CustomTypography.title(CustomTitleKeys.k1),
               ),
               SizedBox(height: Adaptive.px(16),),
               Text(
                 'Attiva la geolocalizzazione del tuo smartphone per visualizzare i ristoranti nella tua zona in classifica.',
-                style: CustomTypography.body['1-regular']!.copyWith(
-                  color: CustomColors.neutral[30]
+                style: CustomTypography.body(CustomBodyKeys.k1Regular).copyWith(
+                  color: CustomColors.neutral(CustomNeutralKeys.k100)
                 ),
               )
             ],

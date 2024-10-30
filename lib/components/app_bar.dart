@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       height: Adaptive.px(72 + (paddingTop ?? 0)),
       padding: EdgeInsets.only(left: Adaptive.px(0), right: Adaptive.px(24), top: Adaptive.px(paddingTop ?? 0)),
       decoration: BoxDecoration(
-        color: color ?? CustomColors.neutral[98],
+        color: color ?? CustomColors.neutral(CustomNeutralKeys.k98),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,14 +54,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressBack!();
                   },
                   behavior: HitTestBehavior.opaque,
-                  child: Padding(padding: EdgeInsets.only(right: Adaptive.px(24), left: Adaptive.px(24), top: Adaptive.px(24), bottom: Adaptive.px(24)), child: Icon(closeIcon == true ? FontAwesomeIcons.xmark : FontAwesomeIcons.arrowLeft, color: titleColor ?? CustomColors.text[40], size: Adaptive.px(20),),),
+                  child: Padding(padding: EdgeInsets.only(right: Adaptive.px(24), left: Adaptive.px(24), top: Adaptive.px(24), bottom: Adaptive.px(24)), child: Icon(closeIcon == true ? FontAwesomeIcons.xmark : FontAwesomeIcons.arrowLeft, color: titleColor ?? CustomColors.text(CustomTextKeys.k40), size: Adaptive.px(20),),),
                 ) : Container(),
                 Padding(
                   padding: EdgeInsets.only(left: Adaptive.px(24)),
                   child: Text(
                     title ?? '',
-                    style: CustomTypography.title[1]!.copyWith(
-                        color: titleColor ?? CustomColors.text[40]
+                    style: CustomTypography.title(CustomTitleKeys.k1).copyWith(
+                        color: titleColor ?? CustomColors.text(CustomTextKeys.k40)
                     ),
                   ),
                 )

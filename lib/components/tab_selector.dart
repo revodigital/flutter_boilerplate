@@ -48,14 +48,14 @@ class _CustomTabSelector extends State<CustomTabSelector> with SingleTickerProvi
                 tabAlignment: TabAlignment.start,
                 physics: const NeverScrollableScrollPhysics(),
                 isScrollable: true,
-                indicatorColor: CustomColors.primary[40],
+                indicatorColor: CustomColors.primary(CustomPrimaryKeys.k40),
                 indicatorWeight: Adaptive.px(1),
                 indicatorSize: TabBarIndicatorSize.tab,
-                unselectedLabelStyle: CustomTypography.body['1-semibold']!.copyWith(
-                    color: CustomColors.text[30]
+                unselectedLabelStyle: CustomTypography.body(CustomBodyKeys.k1Semibold).copyWith(
+                    color: CustomColors.text(CustomTextKeys.k30)
                 ),
-                labelStyle: CustomTypography.body['1-semibold']!.copyWith(
-                    color: CustomColors.primary[40]
+                labelStyle: CustomTypography.body(CustomBodyKeys.k1Semibold).copyWith(
+                    color: CustomColors.primary(CustomPrimaryKeys.k40)
                 ),
                 labelPadding: EdgeInsets.symmetric(horizontal: Adaptive.px(8)),
                 indicatorPadding: EdgeInsets.symmetric(horizontal: Adaptive.px(8)),

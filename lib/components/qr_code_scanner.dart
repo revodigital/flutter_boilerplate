@@ -56,13 +56,13 @@ class _CustomQrCodeScanner extends State<CustomQrCodeScanner> with WidgetsBindin
               Icon(
                 FontAwesomeIcons.qrcode,
                 size: Adaptive.px(40),
-                color: CustomColors.neutral[90],
+                color: CustomColors.neutral(CustomNeutralKeys.k90),
               ),
               SizedBox(height: Adaptive.px(24),),
               Text(
                 widget.cameraEnabled ? 'Ricerca QrCode in corso...' : 'Permesso alla camera non concesso',
-                style: CustomTypography.body['1-medium']!.copyWith(
-                    color: CustomColors.neutral[100]
+                style: CustomTypography.body(CustomBodyKeys.k1Medium).copyWith(
+                    color: CustomColors.neutral(CustomNeutralKeys.k100)
                 ),
               ),
             ]

@@ -16,12 +16,6 @@ class AuthPostModel {
   });
 }
 
-enum AuthGetModelType {
-  Installatore,
-  Utente,
-  God
-}
-
 class AuthGetModel {
   String? email;
   String? type;
@@ -56,7 +50,7 @@ class AuthGetModel {
   }
 
   String toJsonString () =>
-      "{\"email\": \"$email\",\"id\": \"$id\", \"type\": \"$type\", \"profilePicture\": \"$profilePicture\", \"name\": \"$name\", \"surname\": \"$surname\"}";
+      '{"email": "$email","id": "$id", "type": "$type", "profilePicture": "$profilePicture", "name": "$name", "surname": "$surname"}';
 
   AuthGetModel.fromJson (Map<String, dynamic> json) {
     _authGetModel.email ??= json['email'];

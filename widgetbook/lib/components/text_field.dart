@@ -5,7 +5,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 @widgetbook.UseCase(name: 'Text Field with Icon', type: CustomTextField)
 Widget buildTextFieldWithIconUseCase(BuildContext context) {
   return Padding(
-    padding: EdgeInsets.all(20),
+    padding: const EdgeInsets.all(20),
     child: Column(
       children: [
         CustomTextField(
@@ -17,7 +17,7 @@ Widget buildTextFieldWithIconUseCase(BuildContext context) {
           label: 'Label',
           icon: Icons.visibility,
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         CustomTextField(
@@ -29,7 +29,7 @@ Widget buildTextFieldWithIconUseCase(BuildContext context) {
           label: 'Label',
           icon: Icons.visibility,
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         CustomTextField(
@@ -49,7 +49,7 @@ Widget buildTextFieldWithIconUseCase(BuildContext context) {
 @widgetbook.UseCase(name: 'Text Field without Icon', type: CustomTextField)
 Widget buildTextFieldWithoutIconUseCase(BuildContext context) {
   return Padding(
-    padding: EdgeInsets.all(20),
+    padding: const EdgeInsets.all(20),
     child: Column(
       children: [
         CustomTextField(
@@ -60,7 +60,7 @@ Widget buildTextFieldWithoutIconUseCase(BuildContext context) {
           placeholder: 'Placeholder',
           label: 'Label',
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         CustomTextField(
@@ -71,7 +71,7 @@ Widget buildTextFieldWithoutIconUseCase(BuildContext context) {
           placeholder: 'Placeholder',
           label: 'Label',
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         CustomTextField(

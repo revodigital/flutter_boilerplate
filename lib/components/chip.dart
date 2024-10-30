@@ -113,9 +113,9 @@ class _CustomChip extends State<CustomChip> with SingleTickerProviderStateMixin 
               ),
               child: Text(
                 widget.label,
-                style: !widget.isActive ? CustomTypography.body['2-regular']!.copyWith(
+                style: !widget.isActive ? CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
                     color: _colorTextAnimation.value
-                ) : CustomTypography.body['2-semibold']!.copyWith(
+                ) : CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
                     color: _colorTextAnimation.value
                 ),
               ),
@@ -146,9 +146,9 @@ class _CustomChip extends State<CustomChip> with SingleTickerProviderStateMixin 
               child: Center(
                 child: Text(
                   widget.label,
-                  style: !widget.isActive ? CustomTypography.body['2-regular']!.copyWith(
+                  style: !widget.isActive ? CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
                       color: _colorTextAnimation.value
-                  ) : CustomTypography.body['2-semibold']!.copyWith(
+                  ) : CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(
                       color: _colorTextAnimation.value
                   ),
                   textAlign: TextAlign.center,

@@ -25,7 +25,7 @@ Future<BitmapDescriptor> createCustomMarkerBitmap(String imageAssetPath, String 
   c.drawImage(i, Offset(0, 0), Paint());
   TextSpan textSpan = TextSpan(
     text: name,
-    style: CustomTypography.title[0]!.copyWith(
+    style: CustomTypography.title(CustomTitleKeys.k0)!.copyWith(
       color: Colors.black
     )
   );

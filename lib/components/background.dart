@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_revo_boilerplate/main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../utils/colors.dart';
@@ -46,7 +44,7 @@ class CustomBackground extends StatelessWidget {
         width: removeSizeConstraints == true ? null : double.infinity,
         height: removeSizeConstraints == true ? null : double.infinity,
         padding: EdgeInsets.symmetric(horizontal: Adaptive.px(defaultPadding ? 24 : 0)),
-        color: defaultColor ? CustomColors.neutral[98] : Colors.transparent,
+        color: defaultColor ? CustomColors.neutral(CustomNeutralKeys.k98) : Colors.transparent,
         child: customOverlay != null && customOverlay!.isVisible ? Stack(
           children: [
             notCenter ? child : Center(child: child),
@@ -55,21 +53,21 @@ class CustomBackground extends StatelessWidget {
                 absorbing: true,
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: Adaptive.px(60)),
-                  color: CustomColors.neutral[90]!.withOpacity(0.75),
+                  color: CustomColors.neutral(CustomNeutralKeys.k90).withOpacity(0.75),
                   child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           CircularProgressIndicator(
-                            color: CustomColors.neutral[100],
+                            color: CustomColors.neutral(CustomNeutralKeys.k100),
                             strokeWidth: Adaptive.px(4),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: Adaptive.px(32)),
                             child: Text(
                               customOverlay!.title,
-                              style: CustomTypography.title[1],
+                              style: CustomTypography.title(CustomTitleKeys.k1),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -77,8 +75,8 @@ class CustomBackground extends StatelessWidget {
                             padding: EdgeInsets.only(top: Adaptive.px(16)),
                             child: Text(
                               'Creazione in corso...',
-                              style: CustomTypography.body['1-regular']!.copyWith(
-                                  color: CustomColors.neutral[100]
+                              style: CustomTypography.body(CustomBodyKeys.k1Regular).copyWith(
+                                  color: CustomColors.neutral(CustomNeutralKeys.k100)
                               ),
                               textAlign: TextAlign.center,
                             ),

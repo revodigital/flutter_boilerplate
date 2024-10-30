@@ -1,7 +1,6 @@
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/utils/typography.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 enum CustomButtonFit {
@@ -142,7 +141,7 @@ class _CustomButton extends State<CustomButton> with SingleTickerProviderStateMi
                           ],
                           Text(
                             widget.label.toUpperCase(),
-                            style: CustomTypography.button['semibold']!.copyWith(
+                            style: CustomTypography.button(CustomButtonKeys.kSemibold).copyWith(
                                 color: _colorTextAnimation.value
                             ),
                           ),

@@ -13,7 +13,7 @@ class CustomLoginModal extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(Adaptive.px(99)), topRight: Radius.circular(Adaptive.px(99))),
-        color: CustomColors.primary[100],
+        color: CustomColors.primary(CustomPrimaryKeys.k40),
       ),
       padding: EdgeInsets.all(Adaptive.px(16)),
       child: Column(
@@ -23,8 +23,8 @@ class CustomLoginModal extends StatelessWidget {
             children: [
               Text(
                 'Perché devo accedere all’app?',
-                style: CustomTypography.title[3]!.copyWith(
-                  color: CustomColors.text[20]
+                style: CustomTypography.title(CustomTitleKeys.k3).copyWith(
+                  color: CustomColors.text(CustomTextKeys.k20)
                 ),
               ),
               CustomIconButton(
@@ -38,8 +38,8 @@ class CustomLoginModal extends StatelessWidget {
           SizedBox(height: Adaptive.px(16),),
           Text(
             "L'utilizzo della nostra app richiede la registrazione o l'accesso per garantire la sicurezza e l'efficacia delle nostre funzionalità, che sono strettamente legate alle operazioni portuali. Queste funzioni non possono essere utilizzate liberamente per motivi conformità e gestione operativa.\n\nRegistrandoti o accedendo, possiamo assicurarti un'esperienza personalizzata, permettendo l'accesso solo a utenti autorizzati che necessitano di interagire con i servizi del porto. Questa misura ci aiuta a mantenere il porto sicuro e operativo.",
-            style: CustomTypography.body['1-medium']!.copyWith(
-                color: CustomColors.text[40]
+            style: CustomTypography.body(CustomBodyKeys.k1Medium).copyWith(
+                color: CustomColors.text(CustomTextKeys.k40)
             ),
           ),
         ],

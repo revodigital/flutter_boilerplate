@@ -6,7 +6,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 @widgetbook.UseCase(name: 'SearchBar', type: CustomSearchBar)
 Widget buildSearchBarUseCase(BuildContext context) {
   return Padding(
-    padding: EdgeInsets.all(20),
+    padding: const EdgeInsets.all(20),
     child: Column(
       children: [
         CustomSearchBar(
@@ -15,12 +15,12 @@ Widget buildSearchBarUseCase(BuildContext context) {
           leadingWidget: Icon(
             Icons.search,
             size: 18,
-            color: CustomColors.neutral[60],
+            color: CustomColors.neutral(CustomNeutralKeys.k100),
           ),
           actionWidget: Icon(
             Icons.close,
             size: 18,
-            color: CustomColors.neutral[60],
+            color: CustomColors.neutral(CustomNeutralKeys.k100),
           ),
         ),
       ],

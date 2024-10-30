@@ -40,12 +40,12 @@ class CustomHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: Container(
+                child: SizedBox(
                   width: double.infinity,
                   child: Text(
                     title,
-                    style: CustomTypography.title[1]!.copyWith(
-                        color: titleColor ?? CustomColors.text[20]
+                    style: CustomTypography.title(CustomTitleKeys.k1).copyWith(
+                        color: titleColor ?? CustomColors.text(CustomTextKeys.k20)
                     ),
                   ),
                 ),

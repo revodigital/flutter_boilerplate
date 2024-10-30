@@ -43,7 +43,7 @@ class CustomAvatarButton extends StatelessWidget {
           width: buildSize().width,
           height: buildSize().height,
           decoration: BoxDecoration(
-            color: CustomColors.neutral[95],
+            color: CustomColors.neutral(CustomNeutralKeys.k95),
             borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(99))),
           ),
           child: ClipRRect(
@@ -59,14 +59,14 @@ class CustomAvatarButton extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(99))),
-            color: CustomColors.neutral[95],
+            color: CustomColors.neutral(CustomNeutralKeys.k95),
           ),
           width: buildSize().width,
           height: buildSize().height,
           child: Icon(
             FontAwesomeIcons.user,
             size: size == CustomAvatarButtonSize.s ? Adaptive.px(20) : size == CustomAvatarButtonSize.m ? Adaptive.px(32) : Adaptive.px(82),
-            color: CustomColors.text[40],
+            color: CustomColors.text(CustomTextKeys.k40),
           ),
         ),
       ),

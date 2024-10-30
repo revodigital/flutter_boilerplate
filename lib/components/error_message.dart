@@ -24,13 +24,13 @@ class CustomErrorMessage extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(8))),
-        color: isInfo == true ? CustomColors.neutral[95] : isDanger == true ? CustomColors.warning[30]!.withOpacity(0.1) : CustomColors.error[30]!.withOpacity(0.1)
+        color: isInfo == true ? CustomColors.neutral(CustomNeutralKeys.k95) : isDanger == true ? CustomColors.warning(CustomWarningKeys.k30).withOpacity(0.1) : CustomColors.error(CustomErrorKeys.k30).withOpacity(0.1)
       ),
       child: overrideMessage ?? Text(
         message,
         textAlign: TextAlign.left,
-        style: CustomTypography.body['1-semibold']!.copyWith(
-            color: isInfo == true ? CustomColors.text[20] : isDanger == true ? CustomColors.warning[30] : CustomColors.error[30]
+        style: CustomTypography.body(CustomBodyKeys.k1Semibold).copyWith(
+            color: isInfo == true ? CustomColors.text(CustomTextKeys.k20) : isDanger == true ? CustomColors.warning(CustomWarningKeys.k30) : CustomColors.error(CustomErrorKeys.k30)
         ),
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/utils/typography.dart';
@@ -30,9 +29,9 @@ class CustomFilterButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(Adaptive.px(12)),
         decoration: BoxDecoration(
-            color: CustomColors.neutral[100],
+            color: CustomColors.neutral(CustomNeutralKeys.k100),
             border: Border.all(
-                color: CustomColors.neutral[80]!,
+                color: CustomColors.neutral(CustomNeutralKeys.k80),
                 width: Adaptive.px(1)
             ),
             borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(8)))
@@ -42,22 +41,22 @@ class CustomFilterButton extends StatelessWidget {
             if (type == CustomFilterButtonType.position) ...[
               Icon(
                 Icons.location_on_outlined,
-                color: CustomColors.primary[50],
+                color: CustomColors.primary(CustomPrimaryKeys.k40),
                 size: Adaptive.px(18),
               ),
               SizedBox(width: Adaptive.px(8),)
             ],
             Text(
               label,
-              style: CustomTypography.body['2-bold']!.copyWith(
-                  color: CustomColors.neutral[20]
+              style: CustomTypography.body(CustomBodyKeys.k2Bold).copyWith(
+                  color: CustomColors.neutral(CustomNeutralKeys.k100)
               ),
             ),
             if (type == CustomFilterButtonType.normal) ...[
               SizedBox(width: Adaptive.px(8),),
               Icon(
                 Icons.keyboard_arrow_down,
-                color: CustomColors.neutral[30],
+                color: CustomColors.neutral(CustomNeutralKeys.k100),
                 size: Adaptive.px(18),
               ),
             ],

@@ -8,7 +8,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class CustomPinInput extends StatefulWidget {
   final Function onCompleted;
 
-  const CustomPinInput({Key? key, required this.onCompleted}) : super(key: key);
+  const CustomPinInput({super.key, required this.onCompleted});
 
   @override
   State<CustomPinInput> createState() => _CustomPinInput();
@@ -27,14 +27,14 @@ class _CustomPinInput extends State<CustomPinInput> {
 
   @override
   Widget build(BuildContext context) {
-    Color focusedBorderColor = CustomColors.primary[60]!;
-    Color fillColor = CustomColors.neutral[100]!;
-    Color borderColor = CustomColors.neutral[80]!;
+    Color focusedBorderColor = CustomColors.primary(CustomPrimaryKeys.k60);
+    Color fillColor = CustomColors.neutral(CustomNeutralKeys.k100);
+    Color borderColor = CustomColors.neutral(CustomNeutralKeys.k80);
 
     final defaultPinTheme = PinTheme(
       width: 48,
       height: 72,
-      textStyle: CustomTypography.body['1-semibold']!.copyWith(color: CustomColors.neutral[0]),
+      textStyle: CustomTypography.body(CustomBodyKeys.k1Semibold).copyWith(color: CustomColors.neutral(CustomNeutralKeys.k100)),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Adaptive.px(4)),
         border: Border.all(color: borderColor),

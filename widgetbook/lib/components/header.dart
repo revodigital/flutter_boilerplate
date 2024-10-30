@@ -7,22 +7,22 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 Widget buildTagUseCase(BuildContext context) {
   return Column(
     children: [
-      CustomHeader(
+      const CustomHeader(
         title: 'Questo è il title',
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
-      CustomHeader(
+      const CustomHeader(
         title: 'Questo è il title',
         icon: Icons.add,
       ),
-      SizedBox(
+      const SizedBox(
         height: 50,
       ),
       CustomHeader(
         title: 'Questo è il title',
-        tag: CustomTag(type: CustomTagType.warning, label: 'Test'),
+        tag: const CustomTag(type: CustomTagType.warning, label: 'Test'),
         icon: Icons.add,
         onPress: (){},
       ),

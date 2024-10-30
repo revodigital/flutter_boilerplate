@@ -106,11 +106,11 @@ class _CustomTextField extends State<CustomTextField> with SingleTickerProviderS
                 children: [
                   widget.required == true ? Text(
                     '* ',
-                    style: CustomTypography.body['2-semibold']!.copyWith(color: CustomColors.text[40]),
+                    style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(color: CustomColors.text(CustomTextKeys.k40)),
                   ) : Container(),
                   Text(
                     widget.label!,
-                    style: CustomTypography.body['2-semibold']!.copyWith(color: CustomColors.text[40]),
+                    style: CustomTypography.body(CustomBodyKeys.k2Semibold).copyWith(color: CustomColors.text(CustomTextKeys.k40)),
                   )
                 ],
               ),
@@ -145,46 +145,46 @@ class _CustomTextField extends State<CustomTextField> with SingleTickerProviderS
                 widget.onChangeValue(text);
               },
               enabled: !widget.disabled,
-              style: CustomTypography.body['1-medium']!.copyWith(color: CustomColors.text[30]),
+              style: CustomTypography.body(CustomBodyKeys.k1Medium).copyWith(color: CustomColors.text(CustomTextKeys.k30)),
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: widget.placeholder,
                 contentPadding: EdgeInsets.fromLTRB(Adaptive.px(16), Adaptive.px(16), Adaptive.px(16), Adaptive.px(16)),
-                fillColor: widget.disabled ? CustomColors.neutral[98] : CustomColors.neutral[100],
+                fillColor: widget.disabled ? CustomColors.neutral(CustomNeutralKeys.k98) : CustomColors.neutral(CustomNeutralKeys.k100),
                 filled: true,
                 disabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.neutral[80]! : CustomColors.error[30]!,
+                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.neutral(CustomNeutralKeys.k80) : CustomColors.error(CustomErrorKeys.k30),
                   ),
                   borderRadius: BorderRadius.circular(Adaptive.px(4))
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.neutral[80]! : CustomColors.error[30]!,
+                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.neutral(CustomNeutralKeys.k80) : CustomColors.error(CustomErrorKeys.k30),
                   ),
                   borderRadius: BorderRadius.circular(Adaptive.px(4))
                 ),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.neutral[80]! : CustomColors.error[30]!,
+                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.neutral(CustomNeutralKeys.k80) : CustomColors.error(CustomErrorKeys.k30),
                   ),
                   borderRadius: BorderRadius.circular(Adaptive.px(4))
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: CustomColors.primary[40]!,
+                    color: CustomColors.primary(CustomPrimaryKeys.k40),
                   ),
                   borderRadius: BorderRadius.circular(Adaptive.px(4))
                 ),
                 prefixIcon: widget.prefixIconAsWidget != null ? widget.prefixIconAsWidget! : widget.prefixIcon != null ? Icon(
                   widget.prefixIcon,
-                  color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text[30]! : CustomColors.error[30]!,
+                  color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text(CustomTextKeys.k30) : CustomColors.error(CustomErrorKeys.k30),
                 ) : null,
                 suffixIcon: widget.type == CustomTextFieldType.password
                     ? IconButton(
                   icon: Icon(
                     _obscureText ? FontAwesomeIcons.lightEyeSlash : FontAwesomeIcons.lightEye,
-                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text[40]! : CustomColors.error[30]!,
+                    color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text(CustomTextKeys.k40) : CustomColors.error(CustomErrorKeys.k30),
                     size: Adaptive.px(20),
                   ),
                   onPressed: () {
@@ -195,7 +195,7 @@ class _CustomTextField extends State<CustomTextField> with SingleTickerProviderS
                 )
                     : widget.iconAsWidget != null ? widget.iconAsWidget! : widget.icon != null ? Icon(
                   widget.icon,
-                  color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text[30]! : CustomColors.error[30]!,
+                  color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text(CustomTextKeys.k30) : CustomColors.error(CustomErrorKeys.k30),
                 ) : null,
               ),
             );
@@ -204,7 +204,7 @@ class _CustomTextField extends State<CustomTextField> with SingleTickerProviderS
         widget.helpText != null ?
             Padding(
               padding: EdgeInsets.only(top: Adaptive.px(4)),
-              child: Text(widget.helpText ?? '', style: CustomTypography.caption['regular']!.copyWith(color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text[40]! : CustomColors.error[30]!),),
+              child: Text(widget.helpText ?? '', style: CustomTypography.caption(CustomCaptionKeys.kRegular).copyWith(color: widget.status == CustomTextFieldStatus.normal ? CustomColors.text(CustomTextKeys.k40) : CustomColors.error(CustomErrorKeys.k30)),),
             ) : Container()
       ],
     );
@@ -288,8 +288,8 @@ class _CustomCreateReviewTextField extends State<CustomCreateReviewTextField> wi
               return Theme(
                 data: ThemeData.light().copyWith(
                   colorScheme: ColorScheme.fromSeed(
-                    seedColor: CustomColors.primary[98]!,
-                    primary: CustomColors.primary[50]!
+                    seedColor: CustomColors.neutral(CustomNeutralKeys.k98),
+                    primary: CustomColors.primary(CustomPrimaryKeys.k40)
                   ),
                 ),
                 child: child!,
@@ -316,46 +316,46 @@ class _CustomCreateReviewTextField extends State<CustomCreateReviewTextField> wi
                 widget.onChangeValue(text);
               },
               enabled: (!widget.disabled && widget.type != CustomCreateReviewTextFieldType.date),
-              style: CustomTypography.body['1-regular'],
+              style: CustomTypography.body(CustomBodyKeys.k1Regular),
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                 hintText: widget.placeholder,
                 contentPadding: EdgeInsets.fromLTRB(Adaptive.px(12), Adaptive.px(7), Adaptive.px(12), Adaptive.px(7)),
-                fillColor: widget.disabled ? CustomColors.neutral[100] : CustomColors.neutral[100],
+                fillColor: widget.disabled ? CustomColors.neutral(CustomNeutralKeys.k100) : CustomColors.neutral(CustomNeutralKeys.k100),
                 filled: true,
                 disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: CustomColors.neutral[80]!,
+                      color: CustomColors.neutral(CustomNeutralKeys.k80),
                     ),
                     borderRadius: BorderRadius.circular(Adaptive.px(8))
                 ),
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: CustomColors.neutral[80]!,
+                      color: CustomColors.neutral(CustomNeutralKeys.k80),
                     ),
                     borderRadius: BorderRadius.circular(Adaptive.px(8))
                 ),
                 border: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: CustomColors.neutral[80]!,
+                      color: CustomColors.neutral(CustomNeutralKeys.k80),
                     ),
                     borderRadius: BorderRadius.circular(Adaptive.px(8))
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: CustomColors.primary[40]!,
+                      color: CustomColors.primary(CustomPrimaryKeys.k40),
                     ),
                     borderRadius: BorderRadius.circular(Adaptive.px(8))
                 ),
                 suffixIcon: widget.type == CustomCreateReviewTextFieldType.price
                     ? Icon(
                   Icons.euro,
-                  color: CustomColors.neutral[20]!,
+                  color: CustomColors.neutral(CustomNeutralKeys.k100),
                   size: Adaptive.px(15),
                 )
                     : widget.suffixIcon != null ? Icon(
                   widget.suffixIcon,
-                  color: CustomColors.neutral[20]!,
+                  color: CustomColors.neutral(CustomNeutralKeys.k100),
                   size: Adaptive.px(15),
                 ) : null,
               ),
