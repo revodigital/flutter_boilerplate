@@ -44,7 +44,7 @@ class CustomBackground extends StatelessWidget {
         width: removeSizeConstraints == true ? null : double.infinity,
         height: removeSizeConstraints == true ? null : double.infinity,
         padding: EdgeInsets.symmetric(horizontal: Adaptive.px(defaultPadding ? 24 : 0)),
-        color: defaultColor ? CustomColors.neutral(CustomNeutralKeys.k98) : Colors.transparent,
+        color: defaultColor ? MaterialColors.neutral.k98 : Colors.transparent,
         child: customOverlay != null && customOverlay!.isVisible ? Stack(
           children: [
             notCenter ? child : Center(child: child),
@@ -53,14 +53,14 @@ class CustomBackground extends StatelessWidget {
                 absorbing: true,
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: Adaptive.px(60)),
-                  color: CustomColors.neutral(CustomNeutralKeys.k90).withOpacity(0.75),
+                  color: MaterialColors.neutral.k90.withOpacity(0.75),
                   child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           CircularProgressIndicator(
-                            color: CustomColors.neutral(CustomNeutralKeys.k100),
+                            color: MaterialColors.neutral.k100,
                             strokeWidth: Adaptive.px(4),
                           ),
                           Padding(
@@ -76,7 +76,7 @@ class CustomBackground extends StatelessWidget {
                             child: Text(
                               'Creazione in corso...',
                               style: CustomTypography.body(CustomBodyKeys.k1Regular).copyWith(
-                                  color: CustomColors.neutral(CustomNeutralKeys.k100)
+                                  color: MaterialColors.neutral.k100
                               ),
                               textAlign: TextAlign.center,
                             ),

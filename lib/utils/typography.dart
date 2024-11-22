@@ -1,42 +1,51 @@
-import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-enum CustomTitleKeys { k0, k1, k2, k3 }
-enum CustomBodyKeys { k1Regular, k1Medium, k1Semibold, k1Bold, k2Regular, k2Semibold, k2Bold, k2Italic }
-enum CustomCaptionKeys { kRegular, kSemibold }
-enum CustomOvertitleKeys { kSemibold }
-enum CustomButtonKeys { kSemibold }
-enum CustomLinkKeys { k1, k2 }
+enum CustomHeadlineKeys { k1, k2, k3 }
+enum CustomTitleKeys { k1, k2, k3 }
+enum CustomBodyKeys { k1Regular, k1Strong, k2Regular, k2Strong, k3Regular, k3Strong }
+enum CustomLinkKeys { k1 }
+enum CustomLabelKeys { k1, k2, k3 }
 
 abstract final class CustomTypography {
-  static final Map<int, TextStyle> _title = {
-    0: TextStyle(
-        fontSize: Adaptive.px(34),
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.w700,
-        color: CustomColors.text(CustomTextKeys.k20),
-        decoration: TextDecoration.none
-    ),
+  static final Map<int, TextStyle> _headline = {
     1: TextStyle(
-        fontSize: Adaptive.px(28),
-        fontFamily: 'Montserrat',
+        fontSize: Adaptive.px(32),
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w700,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
     ),
     2: TextStyle(
-        fontSize: Adaptive.px(22),
-        fontFamily: 'Montserrat',
+        fontSize: Adaptive.px(28),
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w700,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
     ),
     3: TextStyle(
-        fontSize: Adaptive.px(18),
-        fontFamily: 'Montserrat',
+        fontSize: Adaptive.px(24),
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w700,
-        color: CustomColors.text(CustomTextKeys.k20),
+        decoration: TextDecoration.none
+    )
+  };
+
+  static final Map<int, TextStyle> _title = {
+    1: TextStyle(
+        fontSize: Adaptive.px(20),
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w700,
+        decoration: TextDecoration.none
+    ),
+    2: TextStyle(
+        fontSize: Adaptive.px(16),
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w700,
+        decoration: TextDecoration.none
+    ),
+    3: TextStyle(
+        fontSize: Adaptive.px(14),
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w700,
         decoration: TextDecoration.none
     )
   };
@@ -44,121 +53,86 @@ abstract final class CustomTypography {
   static final Map<String, TextStyle> _body = {
     '1-regular': TextStyle(
         fontSize: Adaptive.px(16),
-        fontFamily: 'Montserrat',
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w400,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
     ),
-    '1-medium': TextStyle(
+    '1-strong': TextStyle(
         fontSize: Adaptive.px(16),
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.w500,
-        color: CustomColors.text(CustomTextKeys.k20),
-        decoration: TextDecoration.none
-    ),
-    '1-semibold': TextStyle(
-        fontSize: Adaptive.px(16),
-        fontFamily: 'Montserrat',
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w600,
-        color: CustomColors.text(CustomTextKeys.k20),
-        decoration: TextDecoration.none
-    ),
-    '1-bold': TextStyle(
-        fontSize: Adaptive.px(16),
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.w700,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
     ),
     '2-regular': TextStyle(
         fontSize: Adaptive.px(14),
-        fontFamily: 'Montserrat',
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w400,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
     ),
-    '2-semibold': TextStyle(
+    '2-strong': TextStyle(
         fontSize: Adaptive.px(14),
-        fontFamily: 'Montserrat',
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w600,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
     ),
-    '2-bold': TextStyle(
-        fontSize: Adaptive.px(14),
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.w700,
-        color: CustomColors.text(CustomTextKeys.k20),
-        decoration: TextDecoration.none
-    ),
-    '2-italic': TextStyle(
-        fontSize: Adaptive.px(14),
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.w300,
-        color: CustomColors.text(CustomTextKeys.k20),
-        decoration: TextDecoration.none,
-        fontStyle: FontStyle.italic
-    )
-  };
-
-  static final Map<String, TextStyle> _caption = {
-    'regular': TextStyle(
-        fontSize: Adaptive.px(14),
-        fontFamily: 'Montserrat',
+    '3-regular': TextStyle(
+        fontSize: Adaptive.px(12),
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w400,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
     ),
-    'semibold': TextStyle(
-        fontSize: Adaptive.px(14),
-        fontFamily: 'Montserrat',
+    '3-strong': TextStyle(
+        fontSize: Adaptive.px(12),
+        fontFamily: 'Inter',
         fontWeight: FontWeight.w600,
-        color: CustomColors.text(CustomTextKeys.k20),
         decoration: TextDecoration.none
-    )
-  };
-
-  static final Map<String, TextStyle> _overtitle = {
-    'semibold': TextStyle(
-      fontSize: Adaptive.px(10),
-      fontFamily: 'Mulish',
-      fontWeight: FontWeight.w600,
-      color: CustomColors.text(CustomTextKeys.k20),
-      decoration: TextDecoration.none
-    )
-  };
-
-  static final Map<String, TextStyle> _button = {
-    'semibold': TextStyle(
-      fontSize: Adaptive.px(14),
-      fontFamily: 'Montserrat',
-      fontWeight: FontWeight.w600,
-      color: CustomColors.text(CustomTextKeys.k20),
-      decoration: TextDecoration.none
-    )
+    ),
   };
 
   static final Map<int, TextStyle> _link = {
     1: TextStyle(
         fontSize: Adaptive.px(16),
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.w600,
-        color: CustomColors.text(CustomTextKeys.k20),
-        decoration: TextDecoration.underline
-    ),
-    2: TextStyle(
-        fontSize: Adaptive.px(14),
-        fontFamily: 'Montserrat',
-        fontWeight: FontWeight.w600,
-        color: CustomColors.text(CustomTextKeys.k20),
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
         decoration: TextDecoration.underline
     )
   };
 
+  static final Map<int, TextStyle> _label = {
+    1: TextStyle(
+        fontSize: Adaptive.px(16),
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        decoration: TextDecoration.none
+    ),
+    2: TextStyle(
+        fontSize: Adaptive.px(14),
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        decoration: TextDecoration.none
+    ),
+    3: TextStyle(
+        fontSize: Adaptive.px(12),
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        decoration: TextDecoration.none
+    )
+  };
+
+
+  static TextStyle headline(CustomHeadlineKeys key) {
+    switch (key) {
+      case CustomHeadlineKeys.k1:
+        return _headline[1]!;
+      case CustomHeadlineKeys.k2:
+        return _headline[2]!;
+      case CustomHeadlineKeys.k3:
+        return _headline[3]!;
+    }
+  }
+
   static TextStyle title(CustomTitleKeys key) {
     switch (key) {
-      case CustomTitleKeys.k0:
-        return _title[0]!;
       case CustomTitleKeys.k1:
         return _title[1]!;
       case CustomTitleKeys.k2:
@@ -172,46 +146,34 @@ abstract final class CustomTypography {
     switch (key) {
       case CustomBodyKeys.k1Regular:
         return _body['1-regular']!;
-      case CustomBodyKeys.k1Medium:
-        return _body['1-medium']!;
-      case CustomBodyKeys.k1Semibold:
-        return _body['1-semibold']!;
-      case CustomBodyKeys.k1Bold:
-        return _body['1-bold']!;
+      case CustomBodyKeys.k1Strong:
+        return _body['1-strong']!;
       case CustomBodyKeys.k2Regular:
         return _body['2-regular']!;
-      case CustomBodyKeys.k2Semibold:
-        return _body['2-semibold']!;
-      case CustomBodyKeys.k2Bold:
-        return _body['2-bold']!;
-      case CustomBodyKeys.k2Italic:
-        return _body['2-italic']!;
+      case CustomBodyKeys.k2Strong:
+        return _body['2-strong']!;
+      case CustomBodyKeys.k3Regular:
+        return _body['3-regular']!;
+      case CustomBodyKeys.k3Strong:
+        return _body['3-strong']!;
     }
-  }
-
-  static TextStyle caption(CustomCaptionKeys key) {
-    switch (key) {
-      case CustomCaptionKeys.kRegular:
-        return _caption['regular']!;
-      case CustomCaptionKeys.kSemibold:
-        return _caption['semibold']!;
-    }
-  }
-
-  static TextStyle overtitle(CustomOvertitleKeys key) {
-    return _overtitle['semibold']!;
-  }
-
-  static TextStyle button(CustomButtonKeys key) {
-    return _button['semibold']!;
   }
 
   static TextStyle link(CustomLinkKeys key) {
     switch (key) {
       case CustomLinkKeys.k1:
         return _link[1]!;
-      case CustomLinkKeys.k2:
-        return _link[2]!;
+    }
+  }
+
+  static TextStyle label(CustomLabelKeys key) {
+    switch (key) {
+      case CustomLabelKeys.k1:
+        return _label[1]!;
+      case CustomLabelKeys.k2:
+        return _label[2]!;
+      case CustomLabelKeys.k3:
+        return _label[3]!;
     }
   }
 

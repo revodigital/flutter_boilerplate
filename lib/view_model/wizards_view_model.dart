@@ -1,51 +1,49 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_revo_boilerplate/api/api_client.dart';
+import 'package:flutter_revo_boilerplate/model/wizards_model.dart';
 import 'package:flutter_revo_boilerplate/utils/loading.dart';
 import 'package:logger/logger.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:flutter_revo_boilerplate/api/generated/openapi.models.swagger.dart';
+part 'wizards_view_model.g.dart';
 
-class WizardsViewModel with ChangeNotifier {
-  LoadingStatus _loadingStatus = LoadingStatus.idle;
-  List<WizardDto> _wizards = [];
-  String? _errorMessage;
+@riverpod
+class WizardsViewModel extends _$WizardsViewModel {
+  @override
+  WizardsModel build() {
+    Future.delayed(
+      Duration(milliseconds: 1000),
+          () {
+        fetchWizards();
+      },
+    );
 
-  LoadingStatus get loadingStatus => _loadingStatus;
-  List<WizardDto> get wizards => _wizards;
-  String? get errorMessage => _errorMessage;
-
-  set wizards(List<WizardDto> l) {
-    _wizards = l;
-    notifyListeners();
-  }
-
-  set errorMessage(String? s) {
-    _errorMessage = s;
-    notifyListeners();
-  }
-
-  set loadingStatus(LoadingStatus l) {
-    _loadingStatus = l;
-    notifyListeners();
+    return WizardsModel(
+      loadingStatus: LoadingStatus.idle,
+      wizards: []
+    );
   }
 
   Future<void> fetchWizards() async {
-    if (loadingStatus == LoadingStatus.loading) {
+    if (state.loadingStatus == LoadingStatus.loading) {
       return;
     }
 
-    loadingStatus = LoadingStatus.loading;
+    state = state.copyWith(
+      loadingStatus: LoadingStatus.loading
+    );
 
     try {
-      wizards = (await AppApiClient.client.wizardsGet()).bodyOrThrow;
-      loadingStatus = LoadingStatus.finished;
+      state = state.copyWith(
+        wizards: (await AppApiClient.client.wizardsGet()).bodyOrThrow,
+        loadingStatus: LoadingStatus.finished
+      );
     } catch (e) {
       Logger().e('[LIST_PICTURE_VIEW_MODEL]: $e');
-      wizards = [];
-      _errorMessage = 'Si è verificato un errore durante il recupero delle pictures.';
-      loadingStatus = LoadingStatus.error;
+      state = state.copyWith(
+        wizards: [],
+        loadingStatus: LoadingStatus.error,
+        errorMessage: 'Si è verificato un errore durante il recupero dei wizards.'
+      );
     }
-
-    notifyListeners();
   }
 }

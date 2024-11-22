@@ -36,7 +36,7 @@ class _InputWithButton extends State<InputWithButton> {
               borderSide: BorderSide(color: Colors.grey, width: 1.0),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: CustomColors.primary(CustomPrimaryKeys.k60), width: 1.0),
+              borderSide: BorderSide(color: MaterialColors.primary.k60, width: 1.0),
             ),
             hintText: 'Descrizione',
           ),

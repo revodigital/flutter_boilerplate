@@ -3,132 +3,99 @@ import 'package:flutter_revo_boilerplate/api/generated/openapi.models.swagger.da
 import 'package:flutter_revo_boilerplate/components/background.dart';
 import 'package:flutter_revo_boilerplate/model/mocked_model.dart';
 import 'package:flutter_revo_boilerplate/view_model/wizards_view_model.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../components/app_bar.dart';
-import '../components/empty_card.dart';
-import '../components/header.dart';
 import '../components/toDelete/wizard_card.dart';
 import '../utils/colors.dart';
 import '../utils/loading.dart';
 import '../utils/typography.dart';
 
-class WizardView extends StatelessWidget {
+class WizardView extends ConsumerWidget {
   const WizardView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => WizardsViewModel(),
-      child: Consumer<WizardsViewModel>(
-        builder: (context, viewModel, _) {
-          if (viewModel.loadingStatus == LoadingStatus.idle) {
-            Future.delayed(Duration.zero, () {
-              viewModel.fetchWizards();
-            });
-          }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final watch = ref.watch(wizardsViewModelProvider);
 
-          return Scaffold(
-            appBar: CustomAppBar(
-              title: 'Boilerplate',
-              paddingTop: 50,
-              opacity: 0.8,
-              actions: [
-              ],
-            ),
-            body: CustomBackground(
-              defaultPadding: false,
-              notCenter: true,
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Boilerplate'),
+        actions: [
+        ],
+      ),
+      body: CustomBackground(
+        defaultPadding: false,
+        notCenter: true,
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: Adaptive.px(24)),
+                child: Text(
+                  AppLocalizations.of(context)!.wizards,
+                  style: CustomTypography.title(CustomTitleKeys.k2).copyWith(
+                      color: MaterialColors.neutral.k10
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: Adaptive.px(16),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: Adaptive.px(24)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const CustomHeader(title: 'Benvenuto su Boilerplate'),
-                    SizedBox(height: Adaptive.px(8),),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: Adaptive.px(24)),
-                      child: Text(
-                        AppLocalizations.of(context)!.wizards,
-                        style: CustomTypography.title(CustomTitleKeys.k2).copyWith(
-                            color: CustomColors.text(CustomTextKeys.k20)
-                        ),
+                  children: (watch.loadingStatus == LoadingStatus.idle || watch.loadingStatus == LoadingStatus.loading) && watch.wizards.isEmpty ? [
+                    CustomWizardCard(
+                      isLoading: true,
+                      wizard: MockWizard(),
+                    )
+                  ] : watch.wizards.isNotEmpty ? [
+                    Text(
+                      'Qui puoi trovare i Maghi.',
+                      style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
+                          color: MaterialColors.neutral.k10
                       ),
                     ),
                     SizedBox(
-                      height: Adaptive.px(16),
+                      height: Adaptive.px(24),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: Adaptive.px(24)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: viewModel.loadingStatus == LoadingStatus.loading && viewModel.wizards.isEmpty ? [
+                    ...watch.wizards.map((WizardDto value) {
+                      return Column(
+                        children: [
                           CustomWizardCard(
-                            isLoading: true,
-                            wizard: MockWizard(),
-                          )
-                        ] : viewModel.wizards.isNotEmpty ? [
-                          Text(
-                            'Qui puoi trovare i Maghi.',
-                            style: CustomTypography.body(CustomBodyKeys.k2Regular).copyWith(
-                                color: CustomColors.text(CustomTextKeys.k40)
-                            ),
+                              wizard: value,
+                              isLoading: false
                           ),
                           SizedBox(
-                            height: Adaptive.px(24),
-                          ),
-                          ...viewModel.wizards.map((WizardDto value) {
-                            return Column(
-                              children: [
-                                CustomWizardCard(
-                                    wizard: value,
-                                    isLoading: false
-                                ),
-                                SizedBox(
-                                  height: Adaptive.px(16),
-                                )
-                              ],
-                            );
-                          }),
-                          if (viewModel.loadingStatus == LoadingStatus.loading) ...[
-                            CustomWizardCard(
-                              isLoading: true,
-                              wizard: MockWizard(),
-                            ),
-                            SizedBox(
-                              height: Adaptive.px(16),
-                            )
-                          ]
-                        ] : [
-                          Container(
-                            alignment: viewModel.loadingStatus == LoadingStatus.error ? Alignment.topLeft : Alignment.center,
-                            child: CustomEmptyCard(
-                              title: '',
-                              description: viewModel.loadingStatus == LoadingStatus.error ? 'Errore nel caricamento... Riprovare più tardi' : 'Non sei iscritto a nessun Porto.',
-                              icon: viewModel.loadingStatus == LoadingStatus.error ? null : SizedBox(
-                                width: Adaptive.px(120),
-                                child: Icon(
-                                  FontAwesomeIcons.boxOpen,
-                                  size: Adaptive.px(83),
-                                  color: CustomColors.neutral(CustomNeutralKeys.k70),
-                                ),
-                              ),
-                              type: CustomEmptyCardType.onlyDescription,
-                              textAlign: viewModel.loadingStatus == LoadingStatus.error ? TextAlign.left : TextAlign.center,
-                            ),
-                          ),
+                            height: Adaptive.px(16),
+                          )
                         ],
+                      );
+                    }),
+                    if (watch.loadingStatus == LoadingStatus.loading) ...[
+                      CustomWizardCard(
+                        isLoading: true,
+                        wizard: MockWizard(),
                       ),
-                    )
+                      SizedBox(
+                        height: Adaptive.px(16),
+                      )
+                    ]
+                  ] : [
+                    Container(
+                      alignment: watch.loadingStatus == LoadingStatus.error ? Alignment.topLeft : Alignment.center,
+                    ),
                   ],
                 ),
-              ),
-            ),
-          );
-        },
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

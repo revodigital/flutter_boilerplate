@@ -1,167 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/components/button.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Primary Button', type: CustomButton)
+@widgetbook.UseCase(name: 'Button', type: CustomButton)
 Widget buildPrimaryButtonUseCase(BuildContext context) {
-  return Column(
-    children: [
-      CustomButton(
-        type: CustomButtonType.primary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.primary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: true,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.primary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: true,
-        onPressed: () {
-        },
-      ),
-    ],
-  );
-}
-
-@widgetbook.UseCase(name: 'Secondary Button', type: CustomButton)
-Widget buildSecondaryButtonUseCase(BuildContext context) {
-  return Column(
-    children: [
-      CustomButton(
-        type: CustomButtonType.secondary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.secondary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: true,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.secondary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: true,
-        onPressed: () {
-        },
-      ),
-    ],
-  );
-}
-
-@widgetbook.UseCase(name: 'Tertiary Button', type: CustomButton)
-Widget buildTertiaryButtonUseCase(BuildContext context) {
-  return Column(
-    children: [
-      CustomButton(
-        type: CustomButtonType.tertiary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.tertiary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: true,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.tertiary,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: true,
-        onPressed: () {
-        },
-      ),
-    ],
-  );
-}
-
-@widgetbook.UseCase(name: 'Alert Button', type: CustomButton)
-Widget buildAlertButtonUseCase(BuildContext context) {
-  return Column(
-    children: [
-      CustomButton(
-        type: CustomButtonType.alert,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.alert,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: true,
-        disabled: false,
-        onPressed: () {
-        },
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      CustomButton(
-        type: CustomButtonType.alert,
-        fit: CustomButtonFit.full,
-        label: 'Ciao',
-        isLoading: false,
-        disabled: true,
-        onPressed: () {
-        },
-      ),
-    ],
+  return Padding(
+    padding: const EdgeInsets.all(5),
+    child: CustomButton(
+      label: context.knobs.string(label: 'Button Label', initialValue: 'Ciao'),
+      type: context.knobs.list(label: 'Button Type', options: CustomButtonType.values),
+      fit: context.knobs.list(label: 'Button Fit', options: CustomButtonFit.values),
+      isLoading: context.knobs.boolean(label: 'Button Loading', initialValue: false),
+      disabled: context.knobs.boolean(label: 'Button Disabled', initialValue: false),
+      iconLeft: context.knobs.listOrNull(label: 'Button Icon Left', options: [Icons.add, Icons.arrow_left], initialOption: null),
+      iconRight: context.knobs.listOrNull(label: 'Button Icon Right', options: [Icons.add, Icons.arrow_right], initialOption: null),
+      onPressed: () {
+      },
+    ),
   );
 }

@@ -48,7 +48,7 @@ class FeedbackHandler {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(Adaptive.px(20)), topRight: Radius.circular(Adaptive.px(20))),
       ),
-      backgroundColor: CustomColors.neutral(CustomNeutralKeys.k100),
+      backgroundColor: MaterialColors.neutral.k100,
       builder: (context) {
         return StatefulBuilder(
           builder: (context, _) {
@@ -71,7 +71,7 @@ class FeedbackHandler {
                               child: Text(
                                 "Feedback",
                                 style: CustomTypography.title(CustomTitleKeys.k2)!.copyWith(
-                                    color: CustomColors.neutral(CustomNeutralKeys.k100)
+                                    color: MaterialColors.neutral.k100
                                 ),
                               ),
                             ),
@@ -84,7 +84,7 @@ class FeedbackHandler {
                                 child: Icon(
                                   Icons.close,
                                   size: Adaptive.px(24),
-                                  color: CustomColors.neutral(CustomNeutralKeys.k100),
+                                  color: MaterialColors.neutral.k100,
                                 ),
                               ),
                             ),

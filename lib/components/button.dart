@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/utils/typography.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,11 +10,14 @@ enum CustomButtonFit {
 }
 
 enum CustomButtonType {
-  primary,
-  secondary,
-  tertiary,
-  alert,
-  white
+  primaryFilled,
+  primaryOutlined,
+  primaryTonal,
+  primaryText,
+  errorFilled,
+  errorOutlined,
+  errorTonal,
+  errorText,
 }
 
 class CustomButton extends StatefulWidget {
@@ -46,18 +50,24 @@ class _CustomButton extends State<CustomButton> with SingleTickerProviderStateMi
   late AnimationController _animationController;
   late Animation<Color?> _colorBgAnimation;
   late Animation<Color?> _colorTextAnimation;
+  late Animation<Color?> _colorBorderAnimation;
 
   @override
   void initState() {
     super.initState();
+
     _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 50));
     _colorBgAnimation = ColorTween(
-        begin: widget.type == CustomButtonType.primary ? CustomButtonColors.primaryBg['enabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryBg['enabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryBg['enabled'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertBg['enabled'] : CustomButtonColors.whiteBg['enabled'],
-        end: (widget.isLoading || widget.disabled == true) ? widget.type == CustomButtonType.primary ? CustomButtonColors.primaryBg['disabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryBg['disabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryBg['disabled'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertBg['disabled'] : CustomButtonColors.whiteBg['disabled'] : widget.type == CustomButtonType.primary ? CustomButtonColors.primaryBg['focused'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryBg['focused'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryBg['focused'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertBg['focused'] : CustomButtonColors.whiteBg['focused']
+        begin: CustomButtonColors.getBackgroundStart(widget.type),
+        end: CustomButtonColors.getBackgroundEnd(widget.type, (widget.isLoading || widget.disabled == true))
     ).animate(_animationController);
     _colorTextAnimation = ColorTween(
-        begin: widget.type == CustomButtonType.primary ? CustomButtonColors.primaryText['enabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryText['enabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryText['enabled'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertText['enabled'] : CustomButtonColors.whiteText['enabled'],
-        end: (widget.isLoading || widget.disabled == true) ? widget.type == CustomButtonType.primary ? CustomButtonColors.primaryText['disabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryText['disabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryText['disabled'] : CustomButtonColors.alertText['disabled'] : widget.type == CustomButtonType.primary ? CustomButtonColors.primaryText['focused'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryText['focused'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryText['focused'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertText['focused'] : CustomButtonColors.whiteText['focused']
+        begin: CustomButtonColors.getTextStart(widget.type),
+        end: CustomButtonColors.getTextEnd(widget.type, (widget.isLoading || widget.disabled == true))
+    ).animate(_animationController);
+    _colorBorderAnimation = ColorTween(
+        begin: CustomButtonColors.getBorderStart(widget.type),
+        end: CustomButtonColors.getBorderEnd(widget.type, (widget.isLoading || widget.disabled == true))
     ).animate(_animationController);
 
     if (widget.isLoading || widget.disabled == true) {
@@ -70,12 +80,16 @@ class _CustomButton extends State<CustomButton> with SingleTickerProviderStateMi
     super.didUpdateWidget(oldWidget);
 
     _colorBgAnimation = ColorTween(
-        begin: widget.type == CustomButtonType.primary ? CustomButtonColors.primaryBg['enabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryBg['enabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryBg['enabled'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertBg['enabled'] : CustomButtonColors.whiteBg['enabled'],
-        end: (widget.isLoading || widget.disabled == true) ? widget.type == CustomButtonType.primary ? CustomButtonColors.primaryBg['disabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryBg['disabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryBg['disabled'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertBg['disabled'] : CustomButtonColors.whiteBg['disabled'] : widget.type == CustomButtonType.primary ? CustomButtonColors.primaryBg['focused'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryBg['focused'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryBg['focused'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertBg['focused'] : CustomButtonColors.whiteBg['focused']
+        begin: CustomButtonColors.getBackgroundStart(widget.type),
+        end: CustomButtonColors.getBackgroundEnd(widget.type, widget.disabled == true)
     ).animate(_animationController);
     _colorTextAnimation = ColorTween(
-        begin: widget.type == CustomButtonType.primary ? CustomButtonColors.primaryText['enabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryText['enabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryText['enabled'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertText['enabled'] : CustomButtonColors.whiteText['enabled'],
-        end: (widget.isLoading || widget.disabled == true) ? widget.type == CustomButtonType.primary ? CustomButtonColors.primaryText['disabled'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryText['disabled'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryText['disabled'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertText['disabled'] : CustomButtonColors.whiteText['disabled'] : widget.type == CustomButtonType.primary ? CustomButtonColors.primaryText['focused'] : widget.type == CustomButtonType.secondary ? CustomButtonColors.secondaryText['focused'] : widget.type == CustomButtonType.tertiary ? CustomButtonColors.tertiaryText['focused'] : widget.type == CustomButtonType.alert ? CustomButtonColors.alertText['focused'] : CustomButtonColors.whiteText['focused']
+        begin: CustomButtonColors.getTextStart(widget.type),
+        end: CustomButtonColors.getTextEnd(widget.type, widget.disabled == true)
+    ).animate(_animationController);
+    _colorBorderAnimation = ColorTween(
+        begin: CustomButtonColors.getBorderStart(widget.type),
+        end: CustomButtonColors.getBorderEnd(widget.type, widget.disabled == true)
     ).animate(_animationController);
 
     if (widget.isLoading || widget.disabled == true) {
@@ -115,12 +129,16 @@ class _CustomButton extends State<CustomButton> with SingleTickerProviderStateMi
           onTapUp: (widget.isLoading || widget.disabled == true) ? (_) {} : (details) => _onTapUp(details),
           onTapDown: (widget.isLoading || widget.disabled == true) ? (_) {} : (details) => _onTapDown(details),
           onTapCancel: (widget.isLoading || widget.disabled == true) ? null : _onTapCancel,
+          behavior: HitTestBehavior.opaque,
           child: CustomButtonContainer(
             fit: widget.fit,
             color: _colorBgAnimation.value,
-            border: widget.type == CustomButtonType.alert ? Border.all(color: _colorTextAnimation.value!, width: Adaptive.px(2)) : null,
+            border: Border.all(
+              color: _colorBorderAnimation.value ?? Colors.white,
+              width: Adaptive.px(1)
+            ),
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: Adaptive.px(14), horizontal: Adaptive.px(16)),
+              padding: EdgeInsets.only(top: Adaptive.px(10), bottom: Adaptive.px(10), left: Adaptive.px(widget.iconLeft != null && !widget.isLoading ? 16 : 24), right: Adaptive.px(widget.iconRight != null && !widget.isLoading ? 16 : 24),),
               child: Center(
                 child: Stack(
                   alignment: Alignment.center,
@@ -134,14 +152,14 @@ class _CustomButton extends State<CustomButton> with SingleTickerProviderStateMi
                             Icon(
                               widget.iconLeft,
                               color: _colorTextAnimation.value,
-                              size: Adaptive.px(20),
+                              size: Adaptive.px(18),
                               weight: 600,
                             ),
                             SizedBox(width: Adaptive.px(8)),
                           ],
                           Text(
-                            widget.label.toUpperCase(),
-                            style: CustomTypography.button(CustomButtonKeys.kSemibold).copyWith(
+                            widget.label,
+                            style: CustomTypography.label(CustomLabelKeys.k2).copyWith(
                                 color: _colorTextAnimation.value
                             ),
                           ),
@@ -150,7 +168,7 @@ class _CustomButton extends State<CustomButton> with SingleTickerProviderStateMi
                             Icon(
                               widget.iconRight,
                               color: _colorTextAnimation.value,
-                              size: Adaptive.px(20),
+                              size: Adaptive.px(18),
                               weight: 600,
                             ),
                           ],
@@ -208,7 +226,7 @@ class CustomButtonContainer extends StatelessWidget {
             height: Adaptive.px(48),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(10))),
+                borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(9))),
                 color: color,
                 border: border
             ),
@@ -223,7 +241,7 @@ class CustomButtonContainer extends StatelessWidget {
       width: double.infinity,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(10))),
+          borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(9))),
           color: color,
           border: border
       ),

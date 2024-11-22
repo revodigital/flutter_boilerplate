@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/view/error_view.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl_standalone.dart';
@@ -38,7 +39,11 @@ void main() async {
     FlutterNativeSplash.remove();
     runApp(const WidgetbookApp());
   } else {
-    runApp(const MainApp());
+    runApp(
+      ProviderScope(
+        child: const MainApp(),
+      )
+    );
   }
 }
 
@@ -65,10 +70,12 @@ class MainApp extends StatefulWidget {
   }
 
   @override
-  State<MainApp> createState() => _MC2App();
+  State<MainApp> createState() => _MainApp();
 }
 
-class _MC2App extends State<MainApp> {
+class _MainApp extends State<MainApp> {
+  GoRouter _routes = AppRouter.getRouter('/${AppRouterRoutes.wizardTab.name}');
+
   @override
   void initState() {
     super.initState();
@@ -130,7 +137,7 @@ class _MC2App extends State<MainApp> {
 
           prefs.setString('logged_as', auth.toJsonString());
           // ignore: use_build_context_synchronously
-          MainApp.replaceScreen(context, AppRouterRoutes.home.value, updateScreen: (){});
+          _routes = AppRouter.getRouter('/${AppRouterRoutes.wizardTab.name}');
         } catch (e, s) {
           Logger().e('[MAIN_2]: $e $s');
         }
@@ -163,12 +170,16 @@ class _MC2App extends State<MainApp> {
               return MaterialApp.router(
                 debugShowCheckedModeBanner: false,
                 title: 'Boilerplate',
-                theme: theme,
-                darkTheme: darkTheme,
-                color: CustomColors.primary(CustomPrimaryKeys.k40),
+                theme: theme.copyWith(
+                  scaffoldBackgroundColor: Colors.white
+                ),
+                darkTheme: darkTheme.copyWith(
+                    scaffoldBackgroundColor: Colors.black
+                ),
+                color: MaterialColors.primary.k40,
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
-                routerConfig: AppRouter.getRouter(),
+                routerConfig: _routes,
                 builder: (context, widget) {
                   return RepaintBoundary(
                     key: MainApp.preview,

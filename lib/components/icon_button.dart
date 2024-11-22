@@ -3,18 +3,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+enum CustomIconButtonType {
+  primaryFilled,
+  primaryTonal,
+  primaryStandard,
+  errorFilled,
+  errorTonal,
+  errorStandard,
+  textField
+}
+
 class CustomIconButton extends StatefulWidget {
   final IconData icon;
   final VoidCallback onPressed;
   final bool? disabled;
-  final Color? iconColor;
+  final CustomIconButtonType type;
+  final bool isLoading;
 
   const CustomIconButton({
     super.key,
     required this.icon,
     required this.onPressed,
     this.disabled,
-    this.iconColor,
+    required this.type,
+    required this.isLoading
   });
 
   @override
@@ -25,21 +37,27 @@ class _CustomIconButton extends State<CustomIconButton> with SingleTickerProvide
   late AnimationController _animationController;
   late Animation<Color?> _colorBgAnimation;
   late Animation<Color?> _colorTextAnimation;
+  late Animation<Color?> _colorBorderAnimation;
 
   @override
   void initState() {
     super.initState();
+
     _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
     _colorBgAnimation = ColorTween(
-        begin: CustomButtonColors.iconBg['enabled'],
-        end: (widget.disabled == true) ? CustomButtonColors.iconBg['disabled'] : CustomButtonColors.iconBg['focused']
+        begin: CustomIconButtonColors.getBackgroundStart(widget.type),
+        end: CustomIconButtonColors.getBackgroundEnd(widget.type, widget.disabled == true),
     ).animate(_animationController);
     _colorTextAnimation = ColorTween(
-        begin: CustomButtonColors.iconText['enabled'],
-        end: (widget.disabled == true) ? CustomButtonColors.iconText['disabled'] : CustomButtonColors.iconText['focused']
+        begin:  CustomIconButtonColors.getTextStart(widget.type),
+        end: CustomIconButtonColors.getTextEnd(widget.type, widget.disabled == true),
+    ).animate(_animationController);
+    _colorBorderAnimation = ColorTween(
+        begin: CustomIconButtonColors.getBorderStart(widget.type),
+        end: CustomIconButtonColors.getBorderEnd(widget.type, widget.disabled == true)
     ).animate(_animationController);
 
-    if (widget.disabled == true) {
+    if (widget.isLoading || widget.disabled == true) {
       _animationController.forward();
     }
   }
@@ -47,7 +65,21 @@ class _CustomIconButton extends State<CustomIconButton> with SingleTickerProvide
   @override
   void didUpdateWidget(CustomIconButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.disabled == true) {
+
+    _colorBgAnimation = ColorTween(
+      begin: CustomIconButtonColors.getBackgroundStart(widget.type),
+      end: CustomIconButtonColors.getBackgroundEnd(widget.type, widget.disabled == true),
+    ).animate(_animationController);
+    _colorTextAnimation = ColorTween(
+      begin:  CustomIconButtonColors.getTextStart(widget.type),
+      end: CustomIconButtonColors.getTextEnd(widget.type, widget.disabled == true),
+    ).animate(_animationController);
+    _colorBorderAnimation = ColorTween(
+        begin: CustomIconButtonColors.getBorderStart(widget.type),
+        end: CustomIconButtonColors.getBorderEnd(widget.type, widget.disabled == true)
+    ).animate(_animationController);
+
+    if (widget.isLoading || widget.disabled == true) {
       _animationController.forward();
     } else {
       _animationController.reverse();
@@ -81,23 +113,50 @@ class _CustomIconButton extends State<CustomIconButton> with SingleTickerProvide
       builder: (context, child) {
         return GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: (widget.disabled == true) ? null : widget.onPressed,
-          onTapUp: (widget.disabled == true) ? (_) {} : (details) => _onTapUp(details),
-          onTapDown: (widget.disabled == true) ? (_) {} : (details) => _onTapDown(details),
-          onTapCancel: (widget.disabled == true) ? null : _onTapCancel,
-          child: Container(
-            decoration: BoxDecoration(
-              color: widget.iconColor ?? _colorBgAnimation.value,
-              borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(99)))
-            ),
-            margin: EdgeInsets.all(Adaptive.px(8)),
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: Adaptive.px(6), horizontal: Adaptive.px(6)),
+          onTap: (widget.disabled == true || widget.isLoading) ? null : widget.onPressed,
+          onTapUp: (widget.disabled == true || widget.isLoading) ? (_) {} : (details) => _onTapUp(details),
+          onTapDown: (widget.disabled == true || widget.isLoading) ? (_) {} : (details) => _onTapDown(details),
+          onTapCancel: (widget.disabled == true || widget.isLoading) ? null : _onTapCancel,
+          child: Padding(
+            padding: EdgeInsets.all(Adaptive.px(8)),
+            child: Container(
+              height: Adaptive.px(40),
+              width: Adaptive.px(40),
+              decoration: BoxDecoration(
+                color: _colorBgAnimation.value,
+                borderRadius: BorderRadius.all(Radius.circular(Adaptive.px(99))),
+                border: Border.all(
+                    color: _colorBorderAnimation.value ?? Colors.white,
+                    width: Adaptive.px(1)
+                )
+              ),
               child: Center(
-                child: Icon(
-                  widget.icon,
-                  color: _colorTextAnimation.value,
-                  size: Adaptive.px(20),
+                child: Stack(
+                  children: [
+                    Opacity(
+                      opacity: 1 - (widget.isLoading ? _animationController.value : 0),
+                      child: Icon(
+                        widget.icon,
+                        color: _colorTextAnimation.value,
+                        size: Adaptive.px(widget.type == CustomIconButtonType.textField ? 18 : 24),
+                      ),
+                    ),
+                    if (widget.isLoading) ...[
+                      Opacity(
+                        opacity: _animationController.value,
+                        child: SizedBox(
+                          height: Adaptive.px(24),
+                          width: Adaptive.px(24),
+                          child: Center(
+                              child: CupertinoActivityIndicator(
+                                color: _colorTextAnimation.value,
+                                animating: true,
+                              )
+                          ),
+                        ),
+                      ),
+                    ]
+                  ],
                 ),
               ),
             ),

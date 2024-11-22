@@ -1,23 +1,19 @@
-// ignore: unnecessary_import
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_revo_boilerplate/utils/colors.dart';
 import 'package:flutter_revo_boilerplate/utils/typography.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomSearchBar extends StatefulWidget {
-  final String label;
+  final String placeholder;
   final Widget leadingWidget;
-  final Widget? actionWidget;
   final TextEditingController? controller;
   final Function(String) onValueChange;
   final bool? disabled;
 
   const CustomSearchBar({
     super.key,
-    required this.label,
+    required this.placeholder,
     required this.leadingWidget,
-    this.actionWidget,
     required this.onValueChange,
     this.controller,
     this.disabled,
@@ -28,11 +24,29 @@ class CustomSearchBar extends StatefulWidget {
 }
 
 class _CustomSearchBar extends State<CustomSearchBar> {
+  final FocusNode _focus = FocusNode();
   final TextEditingController _controller = TextEditingController();
+  Color _bgColor = CustomSearchBarColors.defaultt.bgEnabled;
 
   @override
   void initState() {
+    _focus.addListener(() {
+      if(_focus.hasFocus){
+        setState(() {
+          _bgColor = CustomSearchBarColors.defaultt.bgPressed;
+        });
+      } else {
+        setState(() {
+          _bgColor = CustomSearchBarColors.defaultt.bgEnabled;
+        });
+      }
+    });
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(CustomSearchBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -45,40 +59,45 @@ class _CustomSearchBar extends State<CustomSearchBar> {
   Widget build(BuildContext context) {
     final controller = widget.controller ?? _controller;
     return TextField(
-      enabled: widget.disabled == false ? true : false,
+      focusNode: _focus,
+      enabled: widget.disabled == true ? false : true,
       controller: controller,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        hintText: widget.label,
+        hintText: widget.placeholder,
+        hintStyle: CustomTypography.body(CustomBodyKeys.k1Regular).copyWith(
+          color: CustomSearchBarColors.defaultt.textEnabled
+        ),
         prefixIcon: widget.leadingWidget,
-        fillColor: CustomColors.neutral(CustomNeutralKeys.k100),
+        filled: true,
+        fillColor: widget.disabled == true ? CustomSearchBarColors.defaultt.bgDisabled : _bgColor,
         contentPadding: EdgeInsets.all(Adaptive.px(16)),
         border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: CustomColors.neutral(CustomNeutralKeys.k80),
+            color: widget.disabled == true ? CustomSearchBarColors.defaultt.borderDisabled : CustomSearchBarColors.defaultt.borderEnabled,
           ),
-          borderRadius: BorderRadius.circular(Adaptive.px(4))
+          borderRadius: BorderRadius.circular(Adaptive.px(12))
         ),
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: CustomColors.neutral(CustomNeutralKeys.k80),
+              color: widget.disabled == true ? CustomSearchBarColors.defaultt.borderDisabled : CustomSearchBarColors.defaultt.borderEnabled,
             ),
-            borderRadius: BorderRadius.circular(Adaptive.px(4))
+            borderRadius: BorderRadius.circular(Adaptive.px(12))
         ),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: CustomColors.primary(CustomPrimaryKeys.k40),
+              color: CustomSearchBarColors.defaultt.borderPressed,
             ),
-            borderRadius: BorderRadius.circular(Adaptive.px(4))
+            borderRadius: BorderRadius.circular(Adaptive.px(12))
         )
       ),
       onChanged: (String text) {
         setState(() {});
         widget.onValueChange(text);
       },
-      style: CustomTypography.body(CustomBodyKeys.k1Medium).copyWith(
-        color: CustomColors.text(CustomTextKeys.k30)
-      ),
+      style: CustomTypography.body(CustomBodyKeys.k1Regular).copyWith(
+        color: CustomSearchBarColors.defaultt.textPressed
+      )
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../utils/colors.dart';
+import 'bottom_navigation.dart';
 
 class AppRouterRouteInfo {
   final String value;
@@ -15,47 +16,66 @@ class AppRouterRouteInfo {
 
 enum AppRouterRoutes {
   initial,
-  home,
+  wizardTab,
   modalFull,
   modalSmall
 }
 
 extension AppRouter on AppRouterRoutes {
+  static final rootNavigatorKey = GlobalKey<NavigatorState>();
+
   AppRouterRouteInfo get value {
     switch (this) {
       case AppRouterRoutes.initial:
         return AppRouterRouteInfo(value: '/', extra: {});
-      case AppRouterRoutes.home:
-        return AppRouterRouteInfo(value: '/home', extra: {});
       case AppRouterRoutes.modalFull:
-        return AppRouterRouteInfo(value: '/modalFull', extra: {});
+        return AppRouterRouteInfo(value: '/${AppRouterRoutes.modalFull.name}', extra: {});
       case AppRouterRoutes.modalSmall:
-        return AppRouterRouteInfo(value: '/modalSmall', extra: {});
-      default:
-        return AppRouterRouteInfo(value: '/', extra: {});
+        return AppRouterRouteInfo(value: '/${AppRouterRoutes.modalSmall.name}', extra: {});
+      case AppRouterRoutes.wizardTab:
+        return AppRouterRouteInfo(value: '/${AppRouterRoutes.wizardTab.name}', extra: {});
     }
   }
 
-  static GoRouter getRouter() {
+  static GoRouter getRouter(String initialLocation) {
+    final shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shellA');
+
     return GoRouter(
-      initialLocation: '/',
+      initialLocation: initialLocation,
       routes: [
         GoRoute(
           path: '/',
           builder: (context, state) => const WizardView(),
         ),
         GoRoute(
-          path: '/home',
-          builder: (context, state) => const WizardView(),
-        ),
-        GoRoute(
-          path: '/modalFull',
+          path: '/${AppRouterRoutes.modalFull.name}',
           pageBuilder: (context, state) => ModalPage(child: ErrorView(), fullPage: true),
         ),
         GoRoute(
-          path: '/modalSmall',
+          path: '/${AppRouterRoutes.modalSmall.name}',
           pageBuilder: (context, state) => ModalPage(child: ErrorView(), fullPage: false),
         ),
+        StatefulShellRoute.indexedStack(
+          builder: (context, state, navigationShell) {
+            return CustomBottomNavigation(
+                navigationShell: navigationShell
+            );
+          },
+          branches: [
+            StatefulShellBranch(
+              navigatorKey: shellNavigatorAKey,
+              routes: [
+                GoRoute(
+                  path: '/${AppRouterRoutes.wizardTab.name}',
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    child: WizardView(),
+                  ),
+                  routes: [],
+                ),
+              ],
+            ),
+          ],
+        )
       ],
     );
   }
@@ -79,7 +99,7 @@ class ModalPage extends Page {
             topLeft: Radius.circular(Adaptive.px(20)),
             topRight: Radius.circular(Adaptive.px(20))
         ),
-        color: CustomColors.neutral(CustomNeutralKeys.k100),
+        color: MaterialColors.neutral.k100,
       ),
       child: fullPage ? child : Wrap(
         children: [
